@@ -8,14 +8,16 @@ module.exports = api => {
     return {
         presets: ['next/babel'],
         plugins: [
-            ['transform-define', envConfig],
+            ['styled-components', { ssr: true }],
+            ['transform-define', envConfig], // TODO: check that out
             [
-                'module-resolver',
+                'module-resolver', // TODO: check that out
                 {
                     root: ['.'],
                     extensions: ['.tsx', '.ts', '.js', '.json', '.scss'],
                 },
             ],
+            ['graphql-tag'], // TODO: check that out
         ],
     };
 };

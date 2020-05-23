@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
-export default function Home() {
+export default function About() {
     return (
         <Layout>
             <Nav />
-            <H1>Index</H1>
+            <H1>About</H1>
         </Layout>
     );
 }
