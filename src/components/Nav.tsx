@@ -17,13 +17,28 @@ export const Nav: React.FC = () => {
             <Link href="/material-2">
                 <StyledLink>Material 2</StyledLink>
             </Link>
+            <Link href="/apollo-ssr">
+                <StyledLink>Apollo SSR</StyledLink>
+            </Link>
+            <Link href="/apollo-ssg">
+                <StyledLink>Apollo SSG</StyledLink>
+            </Link>
+            <Link href="/apollo-info">
+                <StyledLink>Apollo info</StyledLink>
+            </Link>
         </nav>
     );
 };
 
 const StyledLink = styled.a`
-    margin-right: 5px;
-    font-size: 18px;
-    color: rebeccapurple;
+    margin-right: 7px;
+    font-family: roboto mono;
+    font-size: 20px;
+    font-weight: 700;
+    color: palevioletred;
     cursor: pointer;
+
+    &:hover {
+        color: rebeccapurple;
+    }
 `;
