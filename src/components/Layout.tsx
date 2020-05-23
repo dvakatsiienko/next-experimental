@@ -1,7 +1,7 @@
-export const Layout: React.FC = () => {
+export const Layout: React.FC = (props) => {
     return (
         <section>
-            <h1>Welcome</h1>
+            {props.children}
         </section>
     );
 };

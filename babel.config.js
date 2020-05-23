@@ -8,6 +8,7 @@ module.exports = api => {
     return {
         presets: ['next/babel'],
         plugins: [
+            ['styled-components', { ssr: true }],
             ['transform-define', envConfig],
             [
                 'module-resolver',
