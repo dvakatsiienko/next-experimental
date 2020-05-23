@@ -15,8 +15,8 @@ import { Nav } from '@/components/Nav';
 export default function About() {
     return (
         <Layout>
+            <Nav />
             <Container maxWidth="sm">
-                <Nav />
                 <Box my={4}>
                     <Typography variant="h4" component="h1" gutterBottom>
                         Next.js example

@@ -1,17 +1,19 @@
-import App from '../apollo/App';
-import InfoBox from '../apollo/InfoBox';
-import Submit from '../apollo/Submit';
-import PostList from '../apollo/PostList';
-import { withApollo } from '../../lib/apollo';
+/* Core */
+import InfoBox from '@/apollo/InfoBox';
+import Submit from '@/apollo/Submit';
+import PostList from '@/apollo/PostList';
 
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
-const IndexPage = () => (
-    <Layout>
-        <Nav />
-        <App>
+/* Instruments */
+import { withApollo } from '@/lib/apollo';
+
+const ApolloSSR = () => {
+    return (
+        <Layout>
+            <Nav />
             <InfoBox>
                 ℹ️ This example shows how to fetch all initial apollo queries on
                 the server. If you <a href="/">reload</a> this page you won't
@@ -27,8 +29,8 @@ const IndexPage = () => (
             </InfoBox>
             <Submit />
             <PostList />
-        </App>
-    </Layout>
-);
+        </Layout>
+    );
+};
 
-export default withApollo({ ssr: true })(IndexPage);
+export default withApollo({ ssr: true })(ApolloSSR);

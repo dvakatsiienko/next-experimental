@@ -17,7 +17,7 @@ module.exports = api => {
                     extensions: ['.tsx', '.ts', '.js', '.json', '.scss'],
                 },
             ],
-            ['graphql-tag'], // TODO: check that out
+            'graphql-tag',
         ],
     };
 };

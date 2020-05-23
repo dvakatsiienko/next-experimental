@@ -1,17 +1,17 @@
-import App from '../apollo/App';
-import InfoBox from '../apollo/InfoBox';
-import Submit from '../apollo/Submit';
-import PostList from '../apollo/PostList';
-import { withApollo } from '../../lib/apollo';
-
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
+import InfoBox from '@/apollo/InfoBox';
+import Submit from '@/apollo/Submit';
+import PostList from '@/apollo/PostList';
 
-const ClientOnlyPage = props => (
-    <Layout>
-        <Nav />
-        <App>
+/* Instruments */
+import { withApollo } from '@/lib/apollo';
+
+const ApolloSSG = () => {
+    return (
+        <Layout>
+            <Nav />
             <InfoBox>
                 ℹ️ This example shows how to disable apollos query fetching on
                 the server. If you <a href="/client-only">reload</a> this page,
@@ -27,8 +27,8 @@ const ClientOnlyPage = props => (
             </InfoBox>
             <Submit />
             <PostList />
-        </App>
-    </Layout>
-);
+        </Layout>
+    );
+};
 
-export default withApollo()(ClientOnlyPage);
+export default withApollo()(ApolloSSG);
