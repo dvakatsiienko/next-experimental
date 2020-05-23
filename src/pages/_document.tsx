@@ -18,39 +18,10 @@ export default class MyDocument extends Document {
                             muiStylesheet.collect(<App {...props} />),
                         );
 
-                        // ctx.renderPage = () =>
-                        //     originalRenderPage({
-                        //         enhanceApp: App => props =>
-                        //             styledComponentsSheet.collectStyles(
-                        //                 materialSheets.collect(
-                        //                     <App {...props} />,
-                        //                 ),
-                        //             ),
-                        //     });
-
-                        //  muiStylesheet.collect(
-                        //     <App {...props} />,
-                        // );
-
-                        // console.log('styled → ', styledSheetResult);
-                        // console.log('mui → ', muiSheetResult);
-
                         return styledSheetResult;
                     },
                 });
             };
-
-            // ctx.renderPage = () => {
-            //     return originalRenderPage({
-            //         enhanceApp: App => props => {
-            //             const muiSheetResult = muiStylesheet.collect(
-            //                 <App {...props} />,
-            //             );
-
-            //             return muiSheetResult;
-            //         },
-            //     });
-            // };
 
             const initialProps = await Document.getInitialProps(ctx);
 
@@ -60,6 +31,7 @@ export default class MyDocument extends Document {
                     <>
                         {initialProps.styles}
                         {styledStylesheet.getStyleElement()}
+                        {muiStylesheet.getStyleElement()}
                     </>
                 ),
             };
