@@ -15,5 +15,5 @@ export default function Home() {
 }
 
 const H1 = styled.h1`
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.palette.primary.main};
 `;

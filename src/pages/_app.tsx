@@ -1,21 +1,27 @@
 /* Core */
-import App from 'next/app';
-import { ThemeProvider } from 'styled-components';
+import { useEffect } from 'react';
+import { AppProps } from 'next/app';
+import { ThemeProvider as MuiProvider } from '@material-ui/core/styles';
+import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 
-export default class MyApp extends App {
-    render() {
-        const { Component, pageProps } = this.props;
+/* Instruments */
+import { theme } from '@/material/theme';
 
-        return (
-            <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
-        );
-    }
-}
+export default (props: AppProps) => {
+    // ? Remove Material UI styles injected during ssr stage.
+    useEffect(() => {
+        const jssStyles = document.querySelector('#jss-server-side');
 
-const theme = {
-    colors: {
-        primary: '#0070f3',
-    },
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
+
+    return (
+        <MuiProvider theme={theme}>
+            <StyledComponentsProvider theme={theme}>
+                <props.Component {...props.pageProps} />
+            </StyledComponentsProvider>
+        </MuiProvider>
+    );
 };
