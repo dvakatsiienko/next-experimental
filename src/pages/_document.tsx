@@ -15,10 +15,20 @@ export default class MyDocument extends Document {
                 return originalRenderPage({
                     enhanceApp: App => props => {
                         const styledSheetResult = styledStylesheet.collectStyles(
-                            <App {...props} />,
+                            muiStylesheet.collect(<App {...props} />),
                         );
 
-                        // const muiSheetResult = muiStylesheet.collect(
+                        // ctx.renderPage = () =>
+                        //     originalRenderPage({
+                        //         enhanceApp: App => props =>
+                        //             styledComponentsSheet.collectStyles(
+                        //                 materialSheets.collect(
+                        //                     <App {...props} />,
+                        //                 ),
+                        //             ),
+                        //     });
+
+                        //  muiStylesheet.collect(
                         //     <App {...props} />,
                         // );
 
@@ -30,17 +40,17 @@ export default class MyDocument extends Document {
                 });
             };
 
-            ctx.renderPage = () => {
-                return originalRenderPage({
-                    enhanceApp: App => props => {
-                        const muiSheetResult = muiStylesheet.collect(
-                            <App {...props} />,
-                        );
+            // ctx.renderPage = () => {
+            //     return originalRenderPage({
+            //         enhanceApp: App => props => {
+            //             const muiSheetResult = muiStylesheet.collect(
+            //                 <App {...props} />,
+            //             );
 
-                        return muiSheetResult;
-                    },
-                });
-            };
+            //             return muiSheetResult;
+            //         },
+            //     });
+            // };
 
             const initialProps = await Document.getInitialProps(ctx);
 

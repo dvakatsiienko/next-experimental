@@ -1,7 +1,14 @@
-export const Layout: React.FC = (props) => {
+/* Core */
+import Head from 'next/head';
+
+export const Layout: React.FC = props => {
     return (
-        <section>
-            {props.children}
-        </section>
+        <>
+            <Head>
+                <link rel="icon" href="/favicon.ico" />
+                <title>Next Experimental</title>
+            </Head>
+            <main>{props.children}</main>
+        </>
     );
 };

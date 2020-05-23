@@ -9,27 +9,30 @@ import Button from '@material-ui/core/Button';
 import ProTip from '@/material/ProTip';
 import Link from '@/material/Link';
 import Copyright from '@/material/Copyright';
+import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
 export default function About() {
     return (
-        <Container maxWidth="sm">
-            <Nav />
-            <Box my={4}>
-                <Typography variant="h4" component="h1" gutterBottom>
-                    Next.js example
-                </Typography>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    component={Link}
-                    naked
-                    href="/">
-                    Go to the main page
-                </Button>
-                <ProTip />
-                <Copyright />
-            </Box>
-        </Container>
+        <Layout>
+            <Container maxWidth="sm">
+                <Nav />
+                <Box my={4}>
+                    <Typography variant="h4" component="h1" gutterBottom>
+                        Next.js example
+                    </Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        component={Link}
+                        naked
+                        href="/">
+                        Go to the main page
+                    </Button>
+                    <ProTip />
+                    <Copyright />
+                </Box>
+            </Container>
+        </Layout>
     );
 }
