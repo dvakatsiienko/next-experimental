@@ -7,8 +7,8 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
     const WithRedux = ({ initialReduxState, ...props }) => {
         const store = getOrInitializeStore(initialReduxState);
         return (
-            <Provider store={store}>
-                <PageComponent {...props} />
+            <Provider store = { store }>
+                <PageComponent { ...props } />
             </Provider>
         );
     };

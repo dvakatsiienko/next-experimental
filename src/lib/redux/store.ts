@@ -3,7 +3,7 @@ import {
     configureStore,
     getDefaultMiddleware,
     AnyAction,
-    Middleware,
+    Middleware
 } from '@reduxjs/toolkit';
 
 export interface State {
@@ -14,8 +14,8 @@ export interface State {
 
 const initialState = {
     lastUpdate: 0,
-    light: false,
-    count: 0,
+    light:      false,
+    count:      0,
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action: AnyAction) => {
             return {
                 ...state,
                 lastUpdate: action.lastUpdate,
-                light: !!action.light,
+                light:      !!action.light,
             };
         case 'INCREMENT':
             return {
@@ -52,7 +52,7 @@ const middleware: Middleware[] = [
          * ? Forced to turn of due to React elements presence in Redux State Notifications slice.
          */
         serializableCheck: false,
-        immutableCheck: false,
+        immutableCheck:    false,
     }),
 ];
 
@@ -60,15 +60,15 @@ if (__DEV__) {
     const { createLogger } = require('redux-logger');
 
     const logger = createLogger({
-        duration: true,
+        duration:  true,
         timestamp: false,
         collapsed: true,
-        colors: {
-            title: () => '#139BFE',
+        colors:    {
+            title:     () => '#139BFE',
             prevState: () => '#1C5FAF',
-            action: () => '#149945',
+            action:    () => '#149945',
             nextState: () => '#A47104',
-            error: () => '#ff0005',
+            error:     () => '#ff0005',
         },
         predicate: () => process.browser,
     });
@@ -82,7 +82,7 @@ export const initializeStore = (preloadedState = initialState) => {
         preloadedState,
         middleware: [
             ...getDefaultMiddleware({
-                immutableCheck: false,
+                immutableCheck:    false,
                 serializableCheck: false,
             }),
             ...middleware,

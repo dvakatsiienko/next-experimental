@@ -10,10 +10,10 @@ const NextComposed = React.forwardRef(function NextComposed(props, ref) {
     const { as, href, ...other } = props;
 
     return (
-        <NextLink href={href} as={as}>
+        <NextLink as = { as } href = { href }>
             {/*
             // @ts-ignore */}
-            <a ref={ref} {...other} />
+            <a ref = { ref } { ...other } />
         </NextLink>
     );
 });
@@ -39,25 +39,25 @@ function Link(props) {
     if (naked) {
         return (
             <NextComposed
-                className={className}
-                ref={innerRef}
-                href={href}
-                {...other}
+                className = { className }
+                href = { href }
+                ref = { innerRef }
+                { ...other }
             />
         );
     }
 
     return (
         <MuiLink
-            component={NextComposed}
-            className={className}
-            ref={innerRef}
-            href={href}
-            {...other}
+            className = { className }
+            component = { NextComposed }
+            href = { href }
+            ref = { innerRef }
+            { ...other }
         />
     );
 }
 
 export default React.forwardRef((props, ref) => (
-    <Link {...props} innerRef={ref} />
+    <Link { ...props } innerRef = { ref } />
 ));

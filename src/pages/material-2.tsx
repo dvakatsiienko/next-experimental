@@ -16,19 +16,20 @@ export default function About() {
     return (
         <Layout>
             <Nav />
-            <Container maxWidth="sm">
-                <Box my={4}>
-                    <Typography variant="h4" component="h1" gutterBottom>
+            <Container maxWidth = 'sm'>
+                <Box my = { 4 }>
+                    <Typography gutterBottom component = 'h1' variant = 'h4'>
                         Next.js example
                     </Typography>
                     {/*
                     // @ts-ignore */}
                     <Button
-                        variant="contained"
-                        color="primary"
-                        component={Link}
                         naked
-                        href="/">
+                        color = 'primary'
+                        component = { Link }
+                        href = '/'
+                        variant = 'contained'
+                    >
                         Go to the main page
                     </Button>
                     <ProTip />

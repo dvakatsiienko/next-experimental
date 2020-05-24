@@ -21,18 +21,18 @@ class App extends NextApp {
         const { Component, pageProps } = this.props;
 
         return (
-            <MuiProvider theme={theme}>
-                <StyledComponentsProvider theme={theme}>
+            <MuiProvider theme = { theme }>
+                <StyledComponentsProvider theme = { theme }>
                     <Head>
-                        <link rel="icon" href="/favicon.ico" />
+                        <link href = '/favicon.ico' rel = 'icon' />
                         <title>Next Experimental</title>
                         <link
-                            rel="stylesheet"
-                            type="text/css"
-                            href="/nprogress.css"
+                            href = '/nprogress.css'
+                            rel = 'stylesheet'
+                            type = 'text/css'
                         />
                     </Head>
-                    <Component {...pageProps} />
+                    <Component { ...pageProps } />
                 </StyledComponentsProvider>
             </MuiProvider>
         );

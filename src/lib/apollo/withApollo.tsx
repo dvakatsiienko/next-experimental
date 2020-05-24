@@ -95,8 +95,8 @@ export const withApollo = ({ ssr = false } = {}) => PageComponent => {
         }
 
         return (
-            <ApolloProvider client={client}>
-                <PageComponent {...pageProps} />
+            <ApolloProvider client = { client }>
+                <PageComponent { ...pageProps } />
             </ApolloProvider>
         );
     };
@@ -158,7 +158,7 @@ export const withApollo = ({ ssr = false } = {}) => PageComponent => {
                         // your entire AppTree once for every query. Check out apollo fragments
                         // if you want to reduce the number of rerenders.
                         // https://www.apollographql.com/docs/react/data/fragments/
-                        await getDataFromTree(<AppTree {...props} />);
+                        await getDataFromTree(<AppTree { ...props } />);
                     } catch (error) {
                         // Prevent Apollo Client GraphQL errors from crashing SSR.
                         // Handle them in components via the data.error prop:
@@ -178,7 +178,7 @@ export const withApollo = ({ ssr = false } = {}) => PageComponent => {
             return {
                 ...pageProps,
                 // Extract query data from the Apollo store
-                apolloState: apolloClient.cache.extract(),
+                apolloState:  apolloClient.cache.extract(),
                 // Provide the client for ssr. As soon as this payload
                 // gets JSON.stringified it will remove itself.
                 apolloClient: ctx.apolloClient,

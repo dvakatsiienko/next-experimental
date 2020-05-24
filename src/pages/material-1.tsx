@@ -13,14 +13,14 @@ export default function Index() {
     return (
         <Layout>
             <Nav />
-            <Container maxWidth="sm">
-                <Box my={4}>
-                    <Typography variant="h4" component="h1" gutterBottom>
+            <Container maxWidth = 'sm'>
+                <Box my = { 4 }>
+                    <Typography gutterBottom component = 'h1' variant = 'h4'>
                         Next.js example
                     </Typography>
                     {/*
                     // @ts-ignore */}
-                    <Link href="/about" color="secondary">
+                    <Link color = 'secondary' href = '/about'>
                         Go to the about page
                     </Link>
                     <ProTip />

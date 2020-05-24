@@ -18,8 +18,8 @@ const ReduxPage: NextPage = () => {
 
     useInterval(() => {
         dispatch({
-            type: 'TICK',
-            light: true,
+            type:       'TICK',
+            light:      true,
             lastUpdate: Date.now(),
         });
     }, 1000);
@@ -37,8 +37,8 @@ ReduxPage.getInitialProps = context => {
     const { dispatch } = context.reduxStore;
 
     dispatch({
-        type: 'TICK',
-        light: typeof window === 'object',
+        type:       'TICK',
+        light:      typeof window === 'object',
         lastUpdate: Date.now(),
     });
     dispatch({

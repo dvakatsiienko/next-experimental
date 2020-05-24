@@ -6,35 +6,35 @@ export const Nav: React.FC = () => {
     return (
         <>
             <nav>
-                <Link href="/">
+                <Link href = '/'>
                     <StyledLink>Index</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/about">
+                <Link href = '/about'>
                     <StyledLink>About</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/material-1">
+                <Link href = '/material-1'>
                     <StyledLink>Material 1 </StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/material-2">
+                <Link href = '/material-2'>
                     <StyledLink>Material 2</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/redux">
+                <Link href = '/redux'>
                     <StyledLink>Redux</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/apollo-redux">
+                <Link href = '/apollo-redux'>
                     <StyledLink>Apollo Redux</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/apollo-ssr">
+                <Link href = '/apollo-ssr'>
                     <StyledLink>Apollo SSR</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href="/apollo-ssg">
+                <Link href = '/apollo-ssg'>
                     <StyledLink>Apollo SSG</StyledLink>
                 </Link>
             </nav>
