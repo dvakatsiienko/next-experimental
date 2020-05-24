@@ -5,8 +5,10 @@ const withBundleAnalyzer = analyze({
     defaultSizes: 'gzip',
 });
 
-module.exports = withBundleAnalyzer({
+const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-});
+};
+
+module.exports = withBundleAnalyzer(nextConfig);

@@ -1,11 +1,9 @@
-/* Core */
-import InfoBox from '@/apollo/InfoBox';
-import Submit from '@/apollo/Submit';
-import PostList from '@/apollo/PostList';
-
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
+import InfoBox from '@/apollo/InfoBox';
+import Submit from '@/apollo/Submit';
+import PostList from '@/apollo/PostList';
 
 /* Instruments */
 import { withApollo } from '@/lib/apollo';

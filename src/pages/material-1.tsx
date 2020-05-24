@@ -18,6 +18,8 @@ export default function Index() {
                     <Typography variant="h4" component="h1" gutterBottom>
                         Next.js example
                     </Typography>
+                    {/*
+                    // @ts-ignore */}
                     <Link href="/about" color="secondary">
                         Go to the about page
                     </Link>

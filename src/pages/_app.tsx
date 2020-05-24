@@ -1,12 +1,18 @@
 /* Core */
 import NextApp from 'next/app';
+import Head from 'next/head';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import { ThemeProvider as MuiProvider } from '@material-ui/core/styles';
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 
 /* Instruments */
 import { theme } from '@/material/theme';
+import { wrapper } from '@/lib/store';
 
-export default class extends NextApp {
+// import '../../nprogress.css';
+
+class App extends NextApp {
     // ? Remove Material UI styles injected during ssr stage.
     componentDidMount() {
         const jssStyles = document.querySelector('#jss-server-side');
@@ -20,9 +26,25 @@ export default class extends NextApp {
         return (
             <MuiProvider theme={theme}>
                 <StyledComponentsProvider theme={theme}>
+                    <Head>
+                        <link rel="icon" href="/favicon.ico" />
+                        <title>Next Experimental</title>
+                        <link
+                            rel="stylesheet"
+                            type="text/css"
+                            href="/nprogress.css"
+                        />
+                    </Head>
                     <Component {...pageProps} />
                 </StyledComponentsProvider>
             </MuiProvider>
         );
     }
 }
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
+// export default wrapper.withRedux(App);
+export default App;

@@ -1,13 +1,6 @@
-/* Core */
-import Head from 'next/head';
-
 export const Layout: React.FC = props => {
     return (
         <>
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <title>Next Experimental</title>
-            </Head>
             <main>{props.children}</main>
             <style jsx global>{`
                 * {
@@ -48,6 +41,13 @@ export const Layout: React.FC = props => {
                 }
                 button:focus {
                     outline: none;
+                }
+
+                hr {
+                    height: 1px;
+                    border: none;
+                    background: #ececec;
+                    margin: 20px 0;
                 }
             `}</style>
         </>

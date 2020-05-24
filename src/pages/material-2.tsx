@@ -21,6 +21,8 @@ export default function About() {
                     <Typography variant="h4" component="h1" gutterBottom>
                         Next.js example
                     </Typography>
+                    {/*
+                    // @ts-ignore */}
                     <Button
                         variant="contained"
                         color="primary"
