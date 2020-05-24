@@ -6,9 +6,9 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 /* Components */
-import ProTip from '@/material/ProTip';
-import Link from '@/material/Link';
-import Copyright from '@/material/Copyright';
+import ProTip from '@/components/material/ProTip';
+import Link from '@/components/material/Link';
+import Copyright from '@/components/material/Copyright';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 

@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
-import Clock from '@/redux/Clock';
-import Counter from '@/redux/Counter';
+import Clock from '@/components/redux/Clock';
+import Counter from '@/components/redux/Counter';
 
 /* Instruments */
 import useInterval from '@/lib/useInterval';
-import { wrapper } from '@/lib/store';
+import { withRedux } from '@/lib/redux';
 
 const ReduxPage: NextPage = () => {
     // Tick the time every second
@@ -33,32 +33,19 @@ const ReduxPage: NextPage = () => {
     );
 };
 
-// export const getServerSideProps = wrapper.getServerSideProps(context => {
-//     const { dispatch } = context.store;
+ReduxPage.getInitialProps = context => {
+    const { dispatch } = context.reduxStore;
 
-//     dispatch({ type: 'TICK', payload: 'was set in other page' });
-//     dispatch({
-//         type: 'TICK',
-//         light: typeof window === 'object',
-//         lastUpdate: Date.now(),
-//     });
+    dispatch({
+        type: 'TICK',
+        light: typeof window === 'object',
+        lastUpdate: Date.now(),
+    });
+    dispatch({
+        type: 'INCREMENT',
+    });
 
-//     return {};
-// });
-
-// ReduxPage.getInitialProps = context => {
-//     const { dispatch } = context.store;
-
-//     dispatch({ type: 'TICK', payload: 'was set in other page' });
-//     dispatch({
-//         type: 'TICK',
-//         light: typeof window === 'object',
-//         lastUpdate: Date.now(),
-//     });
-
-//     return {};
-// };
-
-import { withRedux } from '@/lib/redux';
+    return {};
+};
 
 export default withRedux(ReduxPage);

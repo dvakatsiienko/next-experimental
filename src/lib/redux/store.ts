@@ -18,7 +18,7 @@ const initialState = {
     count: 0,
 };
 
-const reducer = (state: State = initialState, action: AnyAction) => {
+const reducer = (state = initialState, action: AnyAction) => {
     switch (action.type) {
         case 'TICK':
             return {
@@ -64,19 +64,22 @@ if (__DEV__) {
         timestamp: false,
         collapsed: true,
         colors: {
-            title: (): string => '#139BFE',
-            prevState: (): string => '#1C5FAF',
-            action: (): string => '#149945',
-            nextState: (): string => '#A47104',
-            error: (): string => '#ff0005',
+            title: () => '#139BFE',
+            prevState: () => '#1C5FAF',
+            action: () => '#149945',
+            nextState: () => '#A47104',
+            error: () => '#ff0005',
         },
+        predicate: () => process.browser,
     });
-    // middleware.push(logger);
+
+    middleware.push(logger);
 }
 
 export const initializeStore = (preloadedState = initialState) => {
     return configureStore({
         reducer,
+        preloadedState,
         middleware: [
             ...getDefaultMiddleware({
                 immutableCheck: false,

@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
-import Clock from '@/redux/Clock';
-import Counter from '@/redux/Counter';
-import Submit from '@/apollo/Submit';
-import PostList from '@/apollo/PostList';
+import Clock from '@/components/redux/Clock';
+import Counter from '@/components/redux/Counter';
+import Submit from '@/components/apollo/Submit';
+import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
 import { withApollo } from '@/lib/apollo';

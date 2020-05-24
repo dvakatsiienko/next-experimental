@@ -1,9 +1,9 @@
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
-import InfoBox from '@/apollo/InfoBox';
-import Submit from '@/apollo/Submit';
-import PostList from '@/apollo/PostList';
+import InfoBox from '@/components/apollo/InfoBox';
+import Submit from '@/components/apollo/Submit';
+import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
 import { withApollo } from '@/lib/apollo';

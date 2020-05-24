@@ -7,10 +7,7 @@ import { ThemeProvider as MuiProvider } from '@material-ui/core/styles';
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 
 /* Instruments */
-import { theme } from '@/material/theme';
-import { wrapper } from '@/lib/store';
-
-// import '../../nprogress.css';
+import { theme } from '@/theme/material-ui';
 
 class App extends NextApp {
     // ? Remove Material UI styles injected during ssr stage.
@@ -46,5 +43,4 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-// export default wrapper.withRedux(App);
 export default App;
