@@ -1,4 +1,5 @@
 /* Core */
+import { NextPage } from 'next';
 import styled from 'styled-components';
 
 /* Components */
@@ -13,6 +14,7 @@ export default function Home() {
         </Layout>
     );
 }
+Home as NextPage;
 
 const H1 = styled.h1`
     color: ${props => props.theme.palette.primary.main};

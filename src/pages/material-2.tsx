@@ -6,27 +6,30 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 /* Components */
-import ProTip from '@/material/ProTip';
-import Link from '@/material/Link';
-import Copyright from '@/material/Copyright';
+import ProTip from '@/components/material/ProTip';
+import Link from '@/components/material/Link';
+import Copyright from '@/components/material/Copyright';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
 export default function About() {
     return (
         <Layout>
-            <Container maxWidth="sm">
-                <Nav />
-                <Box my={4}>
-                    <Typography variant="h4" component="h1" gutterBottom>
+            <Nav />
+            <Container maxWidth = 'sm'>
+                <Box my = { 4 }>
+                    <Typography gutterBottom component = 'h1' variant = 'h4'>
                         Next.js example
                     </Typography>
+                    {/*
+                    // @ts-ignore */}
                     <Button
-                        variant="contained"
-                        color="primary"
-                        component={Link}
                         naked
-                        href="/">
+                        color = 'primary'
+                        component = { Link }
+                        href = '/'
+                        variant = 'contained'
+                    >
                         Go to the main page
                     </Button>
                     <ProTip />

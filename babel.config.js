@@ -1,4 +1,6 @@
-const envConfig = require('./env-config.js');
+/* eslint-env node */
+
+const { envConfig } = require('./env-config.js');
 
 module.exports = api => {
     const env = api.env();
@@ -6,18 +8,11 @@ module.exports = api => {
     api.cache.using(() => env === 'development');
 
     return {
-        presets: ['next/babel'],
+        presets: [ 'next/babel' ],
         plugins: [
-            ['styled-components', { ssr: true }],
-            ['transform-define', envConfig], // TODO: check that out
-            [
-                'module-resolver', // TODO: check that out
-                {
-                    root: ['.'],
-                    extensions: ['.tsx', '.ts', '.js', '.json', '.scss'],
-                },
-            ],
-            ['graphql-tag'], // TODO: check that out
+            [ 'styled-components', { ssr: true }],
+            [ 'transform-define', envConfig ],
+            'graphql-tag',
         ],
     };
 };

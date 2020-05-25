@@ -14,7 +14,7 @@ export default class extends Document {
                 return originalRenderPage({
                     enhanceApp: App => props => {
                         const styledSheetResult = styledComponentsStylesheet.collectStyles(
-                            muiStylesheet.collect(<App {...props} />),
+                            muiStylesheet.collect(<App { ...props } />),
                         );
 
                         return styledSheetResult;

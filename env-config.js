@@ -1,9 +1,11 @@
-const { BUILD_ENV } = process.env;
+/* eslint-env node */
 
-module.exports = {
-    __ENV__:   BUILD_ENV,
-    __DEV__:   BUILD_ENV === 'development',
-    __STAGE__: BUILD_ENV === 'stage',
-    __PROD__:  BUILD_ENV === 'production',
-    __TEST__:  BUILD_ENV === 'test',
+const { NODE_ENV } = process.env;
+
+module.exports.envConfig = {
+    __ENV__:   NODE_ENV,
+    __DEV__:   NODE_ENV === 'development',
+    __STAGE__: NODE_ENV === 'stage',
+    __PROD__:  NODE_ENV === 'production',
+    __TEST__:  NODE_ENV === 'test',
 };

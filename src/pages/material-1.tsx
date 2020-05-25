@@ -3,22 +3,24 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import ProTip from '@/material/ProTip';
-import Link from '@/material/Link';
-import Copyright from '@/material/Copyright';
+import ProTip from '@/components/material/ProTip';
+import Link from '@/components/material/Link';
+import Copyright from '@/components/material/Copyright';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
 export default function Index() {
     return (
         <Layout>
-            <Container maxWidth="sm">
-                <Nav />
-                <Box my={4}>
-                    <Typography variant="h4" component="h1" gutterBottom>
+            <Nav />
+            <Container maxWidth = 'sm'>
+                <Box my = { 4 }>
+                    <Typography gutterBottom component = 'h1' variant = 'h4'>
                         Next.js example
                     </Typography>
-                    <Link href="/about" color="secondary">
+                    {/*
+                    // @ts-ignore */}
+                    <Link color = 'secondary' href = '/about'>
                         Go to the about page
                     </Link>
                     <ProTip />

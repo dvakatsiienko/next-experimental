@@ -1,0 +1,32 @@
+# Query
+query allPosts($first: Int!, $skip: Int!) {
+    allPosts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
+        id
+        title
+        votes
+        url
+        createdAt
+    }
+    _allPostsMeta {
+        count
+    }
+}
+
+# Mutation
+mutation createPost($title: String!, $url: String!) {
+    createPost(title: $title, url: $url) {
+        id
+        title
+        votes
+        url
+        createdAt
+    }
+}
+
+mutation updatePost($id: ID!, $votes: Int) {
+    updatePost(id: $id, votes: $votes) {
+        __typename
+        id
+        votes
+    }
+}
