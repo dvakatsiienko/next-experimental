@@ -1,22 +1,10 @@
-/* Core */
-import { useMutation, gql } from '@apollo/client';
+import { allPostsQueryVars } from './PostList';
 
-import { ALL_POSTS_QUERY, allPostsQueryVars } from './PostList';
-
-const CREATE_POST_MUTATION = gql`
-    mutation createPost($title: String!, $url: String!) {
-        createPost(title: $title, url: $url) {
-            id
-            title
-            votes
-            url
-            createdAt
-        }
-    }
-`;
+/* Instruments */
+import * as gql from '@/graphql';
 
 export default function Submit() {
-    const [ createPost, { loading }] = useMutation(CREATE_POST_MUTATION);
+    const [ createPost, { loading }] = gql.useCreatePostMutation();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -28,14 +16,14 @@ export default function Submit() {
 
         createPost({
             variables: { title, url },
-            update:    (proxy, { data: { createPost } }) => {
-                const data = proxy.readQuery({
-                    query:     ALL_POSTS_QUERY,
+            update:    (cache, { data: { createPost } }) => {
+                const data = cache.readQuery<gql.AllPostsQuery>({
+                    query:     gql.AllPostsDocument,
                     variables: allPostsQueryVars,
                 });
-                // Update the cache with the new post at the top of the
-                proxy.writeQuery({
-                    query: ALL_POSTS_QUERY,
+
+                cache.writeQuery<gql.AllPostsQuery>({
+                    query: gql.AllPostsDocument,
                     data:  {
                         ...data,
                         allPosts: [ createPost, ...data.allPosts ],

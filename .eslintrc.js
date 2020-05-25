@@ -29,9 +29,9 @@ module.exports = {
     ],
     rules: {
         /* Typescript */
-        '@typescript-eslint/camelcase':                     0,
-        '@typescript-eslint/no-use-before-define':          0,
-        '@typescript-eslint/explicit-function-return-type': 0,
+        '@typescript-eslint/naming-convention':              0,
+        '@typescript-eslint/no-use-before-define':           0,
+        '@typescript-eslint/explicit-module-boundary-types': 0,
 
         /* React: hooks */
         'react-hooks/rules-of-hooks':  1,
@@ -52,7 +52,7 @@ module.exports = {
         'react/prop-types':                           0,
         'react/no-unused-prop-types':                 1,
         'react/no-unused-state':                      1,
-        'react/react-in-jsx-scope':                   1,
+        'react/react-in-jsx-scope':                   0,
         'react/void-dom-elements-no-children':        1,
         'react/display-name':                         0,
 

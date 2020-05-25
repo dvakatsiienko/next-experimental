@@ -1,44 +1,29 @@
 /* Core */
-import { useQuery, gql, NetworkStatus } from '@apollo/client';
+import { NetworkStatus } from '@apollo/client';
 
+/* Components */
 import ErrorMessage from './ErrorMessage';
 import PostUpvoter from './PostUpvoter';
 
-export const ALL_POSTS_QUERY = gql`
-    query allPosts($first: Int!, $skip: Int!) {
-        allPosts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
-            id
-            title
-            votes
-            url
-            createdAt
-        }
-        _allPostsMeta {
-            count
-        }
-    }
-`;
+/* Instruments */
+import * as gql from '@/graphql';
+
 export const allPostsQueryVars = {
     skip:  0,
     first: 10,
 };
 
 export default function PostList() {
-    const { loading, error, data, fetchMore, networkStatus } = useQuery(
-        ALL_POSTS_QUERY,
-        {
-            variables:                   allPostsQueryVars,
-            // Setting this value to true will make the component rerender when
-            // the "networkStatus" changes, so we are able to know if it is fetching
-            // more data
-            notifyOnNetworkStatusChange: true,
-        },
-    );
+    const allPostsQueryResult = gql.useAllPostsQuery({
+        variables:                   allPostsQueryVars,
+        notifyOnNetworkStatusChange: true,
+    });
 
-    const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
+    const loadingMorePosts =
+        allPostsQueryResult.networkStatus === NetworkStatus.fetchMore;
 
     const loadMorePosts = () => {
-        fetchMore({
+        allPostsQueryResult.fetchMore({
             variables: {
                 skip: allPosts.length,
             },
@@ -46,6 +31,7 @@ export default function PostList() {
                 if (!fetchMoreResult) {
                     return previousResult;
                 }
+
                 return Object.assign({}, previousResult, {
                     // Append the new posts results to the old one
                     allPosts: [
@@ -57,14 +43,14 @@ export default function PostList() {
         });
     };
 
-    if (error) {
+    if (allPostsQueryResult.error) {
         return <ErrorMessage message = 'Error loading posts.' />;
     }
-    if (loading && !loadingMorePosts) {
+    if (allPostsQueryResult.loading && !loadingMorePosts) {
         return <div>Loading</div>;
     }
 
-    const { allPosts, _allPostsMeta } = data;
+    const { allPosts, _allPostsMeta } = allPostsQueryResult.data;
     const areMorePosts = allPosts.length < _allPostsMeta.count;
 
     return (

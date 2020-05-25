@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const { NODE_ENV } = process.env;
 
 module.exports.envConfig = {
