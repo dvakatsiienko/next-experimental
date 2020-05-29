@@ -3,10 +3,10 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "start": "next dev -p 3001",
         "build": "next build",
         "build:analyze": "ANALYZE=true next build",
-        "start": "next start",
+        "serve": "next start",
         "codegen:graphql": "gql-gen --config \"./graphql-codegen.yml\"",
         "prettier": "prettier-eslint --write \"$PWD/src/**/*.tsx\""
     },
