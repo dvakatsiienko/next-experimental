@@ -33,19 +33,4 @@ const ReduxPage: NextPage = () => {
     );
 };
 
-ReduxPage.getInitialProps = context => {
-    const { dispatch } = context.reduxStore;
-
-    dispatch({
-        type:       'TICK',
-        light:      typeof window === 'object',
-        lastUpdate: Date.now(),
-    });
-    dispatch({
-        type: 'INCREMENT',
-    });
-
-    return {};
-};
-
 export default withRedux(ReduxPage);

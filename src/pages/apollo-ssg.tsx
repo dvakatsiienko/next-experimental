@@ -1,6 +1,3 @@
-/* Core */
-import { compose } from 'redux';
-
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
@@ -10,7 +7,6 @@ import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
 import { withApollo } from '@/lib/apollo';
-import { withRedux } from '@/lib/redux';
 
 const ApolloSSG = () => {
     return (
@@ -36,4 +32,5 @@ const ApolloSSG = () => {
     );
 };
 
-export default compose(withRedux, withApollo()(ApolloSSG));
+// export default compose(withApollo(), withRedux)(ApolloSSG);
+export default withApollo(ApolloSSG);

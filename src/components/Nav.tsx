@@ -26,16 +26,20 @@ export const Nav: React.FC = () => {
                     <StyledLink>Redux</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href = '/apollo-redux'>
-                    <StyledLink>Apollo Redux</StyledLink>
-                </Link>
-                &nbsp;|&nbsp;
                 <Link href = '/apollo-ssr'>
                     <StyledLink>Apollo SSR</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
                 <Link href = '/apollo-ssg'>
                     <StyledLink>Apollo SSG</StyledLink>
+                </Link>
+                &nbsp;|&nbsp;
+                <Link href = '/apollo-redux'>
+                    <StyledLink>Apollo Redux</StyledLink>
+                </Link>
+                &nbsp;|&nbsp;
+                <Link href = '/apollo-redux-ssr'>
+                    <StyledLink>Apollo Redux SSR</StyledLink>
                 </Link>
             </nav>
             <hr />

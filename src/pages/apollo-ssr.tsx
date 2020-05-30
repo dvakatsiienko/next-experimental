@@ -32,4 +32,4 @@ const ApolloSSR = () => {
     );
 };
 
-export default withApollo({ ssr: true })(ApolloSSR);
+export default withApollo(ApolloSSR, { ssr: true });

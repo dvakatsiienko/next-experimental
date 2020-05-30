@@ -1,11 +1,14 @@
+/* Core */
 import { Provider } from 'react-redux';
 import App from 'next/app';
 
+/* Instruments */
 import { initializeStore } from './store';
 
-export const withRedux = (PageComponent, { ssr = true } = {}) => {
+export const withRedux = (PageComponent, { ssr = false } = {}) => {
     const WithRedux = ({ initialReduxState, ...props }) => {
         const store = getOrInitializeStore(initialReduxState);
+
         return (
             <Provider store = { store }>
                 <PageComponent { ...props } />

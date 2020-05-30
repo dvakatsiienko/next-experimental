@@ -1,5 +1,5 @@
 /* Core */
-import NextApp from 'next/app';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import NProgress from 'nprogress';
@@ -9,35 +9,31 @@ import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 /* Instruments */
 import { theme } from '@/theme/material-ui';
 
-class App extends NextApp {
+const App = props => {
     // ? Remove Material UI styles injected during ssr stage.
-    componentDidMount() {
+    useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side');
 
         jssStyles?.parentElement.removeChild(jssStyles);
-    }
+    }, []);
 
-    render() {
-        const { Component, pageProps } = this.props;
-
-        return (
-            <MuiProvider theme = { theme }>
-                <StyledComponentsProvider theme = { theme }>
-                    <Head>
-                        <link href = '/favicon.ico' rel = 'icon' />
-                        <title>Next Experimental</title>
-                        <link
-                            href = '/nprogress.css'
-                            rel = 'stylesheet'
-                            type = 'text/css'
-                        />
-                    </Head>
-                    <Component { ...pageProps } />
-                </StyledComponentsProvider>
-            </MuiProvider>
-        );
-    }
-}
+    return (
+        <MuiProvider theme = { theme }>
+            <StyledComponentsProvider theme = { theme }>
+                <Head>
+                    <link href = '/favicon.ico' rel = 'icon' />
+                    <title>Next Experimental</title>
+                    <link
+                        href = '/nprogress.css'
+                        rel = 'stylesheet'
+                        type = 'text/css'
+                    />
+                </Head>
+                <props.Component { ...props.pageProps } />
+            </StyledComponentsProvider>
+        </MuiProvider>
+    );
+};
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

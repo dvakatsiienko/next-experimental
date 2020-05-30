@@ -1,6 +1,6 @@
 /* Core */
-import { useDispatch } from 'react-redux';
 import { compose } from 'redux';
+import { useDispatch } from 'react-redux';
 
 /* Components */
 import { Layout } from '@/components/Layout';
@@ -15,7 +15,7 @@ import { withApollo } from '@/lib/apollo';
 import { withRedux } from '@/lib/redux';
 import useInterval from '@/lib/useInterval';
 
-const ApolloReduxPage = () => {
+const ApolloReduxSSR = () => {
     // Tick the time every second
     const dispatch = useDispatch();
 
@@ -40,4 +40,4 @@ const ApolloReduxPage = () => {
     );
 };
 
-export default compose(withApollo, withRedux)(ApolloReduxPage);
+export default compose(withApollo, withRedux)(ApolloReduxSSR); // TODO...
