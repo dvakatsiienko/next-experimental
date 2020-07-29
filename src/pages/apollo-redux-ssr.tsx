@@ -1,5 +1,5 @@
 /* Core */
-import { compose } from 'redux';
+import { NextPage, GetServerSideProps } from 'next';
 import { useDispatch } from 'react-redux';
 
 /* Components */
@@ -11,11 +11,12 @@ import Submit from '@/components/apollo/Submit';
 import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
-import { withApollo } from '@/lib/apollo';
-import { withRedux } from '@/lib/redux';
-import useInterval from '@/lib/useInterval';
+import * as gql from '@/graphql';
+import { useInterval } from '@/hooks';
+import { initApollo } from '@/lib/apollo';
+import { allPostsQueryVars } from '@/components/apollo/PostList';
 
-const ApolloReduxSSR = () => {
+const ApolloReduxSSR: NextPage = () => {
     // Tick the time every second
     const dispatch = useDispatch();
 
@@ -40,4 +41,19 @@ const ApolloReduxSSR = () => {
     );
 };
 
-export default compose(withApollo, withRedux)(ApolloReduxSSR); // TODO...
+export const getServerSideProps: GetServerSideProps = async () => {
+    const client = initApollo();
+
+    await client.query({
+        query:     gql.AllPostsDocument,
+        variables: allPostsQueryVars,
+    });
+
+    return {
+        props: {
+            initialApolloState: client.cache.extract(),
+        },
+    };
+};
+
+export default ApolloReduxSSR;

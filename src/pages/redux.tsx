@@ -9,8 +9,7 @@ import Clock from '@/components/redux/Clock';
 import Counter from '@/components/redux/Counter';
 
 /* Instruments */
-import useInterval from '@/lib/useInterval';
-import { withRedux } from '@/lib/redux';
+import { useInterval } from '@/hooks';
 
 const ReduxPage: NextPage = () => {
     // Tick the time every second
@@ -33,4 +32,4 @@ const ReduxPage: NextPage = () => {
     );
 };
 
-export default withRedux(ReduxPage);
+export default ReduxPage;

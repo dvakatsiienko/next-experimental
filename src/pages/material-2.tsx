@@ -1,5 +1,5 @@
 /* Core */
-import React from 'react';
+import { NextPage } from 'next';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -12,7 +12,7 @@ import Copyright from '@/components/material/Copyright';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
-export default function About() {
+const About: NextPage = () => {
     return (
         <Layout>
             <Nav />
@@ -38,4 +38,6 @@ export default function About() {
             </Container>
         </Layout>
     );
-}
+};
+
+export default About;

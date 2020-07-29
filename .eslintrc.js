@@ -32,6 +32,7 @@ module.exports = {
         '@typescript-eslint/naming-convention':              0,
         '@typescript-eslint/no-use-before-define':           0,
         '@typescript-eslint/explicit-module-boundary-types': 0,
+        '@typescript-eslint/ban-ts-comment':                 0,
 
         /* React: hooks */
         'react-hooks/rules-of-hooks':  1,

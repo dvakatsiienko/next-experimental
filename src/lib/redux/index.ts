@@ -1,2 +1,2 @@
 export * from './store';
-export * from './withRedux';
+export * from './useStore';

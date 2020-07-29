@@ -76,7 +76,7 @@ if (__DEV__) {
     middleware.push(logger);
 }
 
-export const initializeStore = (preloadedState = initialState) => {
+export const createStore = (preloadedState = initialState) => {
     return configureStore({
         reducer,
         preloadedState,
