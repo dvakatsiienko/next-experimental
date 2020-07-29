@@ -9,8 +9,7 @@ import Clock from '@/components/redux/Clock';
 import Counter from '@/components/redux/Counter';
 
 /* Instruments */
-import useInterval from '@/lib/useInterval';
-import { withRedux } from '@/lib/redux';
+import { useInterval } from '@/hooks';
 
 const ReduxPage: NextPage = () => {
     // Tick the time every second
@@ -33,19 +32,4 @@ const ReduxPage: NextPage = () => {
     );
 };
 
-ReduxPage.getInitialProps = context => {
-    const { dispatch } = context.reduxStore;
-
-    dispatch({
-        type:       'TICK',
-        light:      typeof window === 'object',
-        lastUpdate: Date.now(),
-    });
-    dispatch({
-        type: 'INCREMENT',
-    });
-
-    return {};
-};
-
-export default withRedux(ReduxPage);
+export default ReduxPage;

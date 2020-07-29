@@ -1,6 +1,5 @@
 /* Core */
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
 
 /* Components */
 import { Layout } from '@/components/Layout';
@@ -11,9 +10,7 @@ import Submit from '@/components/apollo/Submit';
 import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
-import { withApollo } from '@/lib/apollo';
-import { withRedux } from '@/lib/redux';
-import useInterval from '@/lib/useInterval';
+import { useInterval } from '@/hooks';
 
 const ApolloReduxPage = () => {
     // Tick the time every second
@@ -40,4 +37,4 @@ const ApolloReduxPage = () => {
     );
 };
 
-export default compose(withRedux, withApollo()(ApolloReduxPage));
+export default ApolloReduxPage;

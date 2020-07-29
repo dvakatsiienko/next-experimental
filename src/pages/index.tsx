@@ -6,16 +6,17 @@ import styled from 'styled-components';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
-export default function Home() {
+const Home: NextPage = () => {
     return (
         <Layout>
             <Nav />
-            <H1>Index</H1>
+            <H1>Home</H1>
         </Layout>
     );
-}
-Home as NextPage;
+};
 
 const H1 = styled.h1`
     color: ${props => props.theme.palette.primary.main};
 `;
+
+export default Home;

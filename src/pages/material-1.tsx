@@ -1,4 +1,5 @@
-import React from 'react';
+/* Core */
+import { NextPage } from 'next';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -9,7 +10,7 @@ import Copyright from '@/components/material/Copyright';
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
 
-export default function Index() {
+const Material1: NextPage = () => {
     return (
         <Layout>
             <Nav />
@@ -29,4 +30,6 @@ export default function Index() {
             </Container>
         </Layout>
     );
-}
+};
+
+export default Material1;

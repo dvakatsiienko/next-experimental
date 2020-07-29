@@ -1,36 +1,40 @@
 /* Core */
 import { NextPage, GetServerSideProps } from 'next';
+import { useDispatch } from 'react-redux';
 
 /* Components */
 import { Layout } from '@/components/Layout';
 import { Nav } from '@/components/Nav';
-import InfoBox from '@/components/apollo/InfoBox';
+import Clock from '@/components/redux/Clock';
+import Counter from '@/components/redux/Counter';
 import Submit from '@/components/apollo/Submit';
 import PostList from '@/components/apollo/PostList';
 
 /* Instruments */
 import * as gql from '@/graphql';
+import { useInterval } from '@/hooks';
 import { initApollo } from '@/lib/apollo';
 import { allPostsQueryVars } from '@/components/apollo/PostList';
 
-const ApolloSSR: NextPage = () => {
+const ApolloReduxSSR: NextPage = () => {
+    // Tick the time every second
+    const dispatch = useDispatch();
+
+    useInterval(() => {
+        dispatch({
+            type:       'TICK',
+            light:      true,
+            lastUpdate: Date.now(),
+        });
+    }, 1000);
+
     return (
         <Layout>
             <Nav />
-            <InfoBox>
-                ℹ️ This example shows how to fetch all initial apollo queries on
-                the server. If you <a href = '/'>reload</a> this page you
-                won&apos;t see a loader since Apollo fetched all needed data on
-                the server. This prevents{' '}
-                <a
-                    href = 'https://nextjs.org/blog/next-9#automatic-static-optimization'
-                    rel = 'noopener noreferrer'
-                    target = '_blank'
-                >
-                    automatic static optimization
-                </a>{' '}
-                in favour of full Server-Side-Rendering.
-            </InfoBox>
+
+            <Clock />
+            <Counter />
+
             <Submit />
             <PostList />
         </Layout>
@@ -52,4 +56,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
 };
 
-export default ApolloSSR;
+export default ApolloReduxSSR;
