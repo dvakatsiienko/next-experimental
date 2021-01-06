@@ -7,10 +7,6 @@ const withBundleAnalyzer = analyze({
     defaultSizes: 'gzip',
 });
 
-const nextConfig = {
-    typescript: {
-        ignoreBuildErrors: true,
-    },
-};
+const nextConfig = {};
 
 module.exports = withBundleAnalyzer(nextConfig);

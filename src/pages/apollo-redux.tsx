@@ -2,12 +2,9 @@
 import { useDispatch } from 'react-redux';
 
 /* Components */
-import { Layout } from '@/components/Layout';
-import { Nav } from '@/components/Nav';
-import Clock from '@/components/redux/Clock';
-import Counter from '@/components/redux/Counter';
-import Submit from '@/components/apollo/Submit';
-import PostList from '@/components/apollo/PostList';
+import { Layout, Nav } from '@/components';
+import { PostList, Submit } from '@/features/apollo';
+import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
 import { useInterval } from '@/hooks';

@@ -1,29 +1,17 @@
 /* Instruments */
 import * as gql from '@/graphql';
 
-export default function PostUpvoter({ votes, id }) {
-    const [ updatePost ] = gql.useUpdatePostMutation();
+export const PostUpvoter: React.FC<PostUpvoterProps> = ({ votes, id }) => {
+    const [ votePostMutation ] = gql.useVotePostMutation();
 
-    const upvotePost = () => {
-        updatePost({
-            variables: {
-                id,
-                votes: votes + 1,
-            },
-            optimisticResponse: {
-                __typename: 'Mutation',
-                updatePost: {
-                    __typename: 'Post',
-                    id,
-                    votes:      votes + 1,
-                },
-            },
-        });
+    const votePost = () => {
+        votePostMutation({ variables: { id } });
     };
 
     return (
-        <button onClick = { () => upvotePost() }>
+        <button onClick = { votePost }>
             {votes}
+
             <style jsx>
                 {`
                     button {
@@ -31,9 +19,11 @@ export default function PostUpvoter({ votes, id }) {
                         border: 1px solid #e4e4e4;
                         color: #000;
                     }
+
                     button:active {
                         background-color: transparent;
                     }
+
                     button:before {
                         align-self: center;
                         border-color: transparent transparent #000000
@@ -49,4 +39,10 @@ export default function PostUpvoter({ votes, id }) {
             </style>
         </button>
     );
+};
+
+/* Types */
+interface PostUpvoterProps {
+    votes: number;
+    id: string;
 }

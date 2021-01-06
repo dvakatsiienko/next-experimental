@@ -1,25 +1,19 @@
-/* eslint-env node */
-
 module.exports = {
-    root:     true,
-    settings: {
-        react: {
-            version: '16.13.1',
-        },
-    },
-    env: {
-        browser: true,
-    },
-    parser:        '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
+    root:   true,
+    parser: '@typescript-eslint/parser',
+    env:    {
+        browser:               true,
+        node:                  true,
+        es2020:                true,
+        'shared-node-browser': true,
     },
     globals: {
         __ENV__:  'readonly',
         __DEV__:  'readonly',
+        __TEST__: 'readonly',
         __PROD__: 'readonly',
+        React:    'readonly',
+        JSX:      'readonly',
     },
     plugins: [ '@typescript-eslint', 'react', 'react-hooks' ],
     extends: [
@@ -56,6 +50,7 @@ module.exports = {
         'react/react-in-jsx-scope':                   0,
         'react/void-dom-elements-no-children':        1,
         'react/display-name':                         0,
+        'react/no-unescaped-entities':                0,
 
         /* React: JSX */
         'react/jsx-boolean-value': 1,
@@ -83,10 +78,7 @@ module.exports = {
         'react/jsx-fragments':                [ 1, 'syntax' ],
         'react/jsx-closing-bracket-location': [
             1,
-            {
-                selfClosing: 'tag-aligned',
-                nonEmpty:    'tag-aligned',
-            },
+            { selfClosing: 'tag-aligned', nonEmpty: 'tag-aligned' },
         ],
         'react/jsx-closing-tag-location': 1,
         'react/jsx-sort-props':           [
@@ -217,7 +209,7 @@ module.exports = {
             },
         ],
         'no-restricted-properties': 1,
-        'no-return-assign':         [ 1, 'except-parens' ],
+        'no-return-assign':         0,
         'no-return-await':          1,
         'no-script-url':            1,
         'no-self-assign':           [
@@ -241,6 +233,8 @@ module.exports = {
         'vars-on-top':                  1,
         'wrap-iife':                    1,
         yoda:                           1,
+        quotes:                         [ 2, 'single' ],
+        'arrow-parens':                 [ 2, 'as-needed' ],
 
         /* ESLint: variables */
         'init-declarations':          1,

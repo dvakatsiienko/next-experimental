@@ -14,14 +14,6 @@ export const Nav: React.FC = () => {
                     <StyledLink>About</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
-                <Link href = '/material-1'>
-                    <StyledLink>Material 1 </StyledLink>
-                </Link>
-                &nbsp;|&nbsp;
-                <Link href = '/material-2'>
-                    <StyledLink>Material 2</StyledLink>
-                </Link>
-                &nbsp;|&nbsp;
                 <Link href = '/redux'>
                     <StyledLink>Redux</StyledLink>
                 </Link>
@@ -51,7 +43,7 @@ const StyledLink = styled.a`
     font-family: roboto mono, system-ui;
     font-size: 20px;
     font-weight: 700;
-    color: palevioletred;
+    color: ${props => props.theme.color1};
     cursor: pointer;
 
     &:hover {

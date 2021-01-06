@@ -1,5 +1,7 @@
-const InfoBox = ({ children }) => (
+export const InfoBox: React.FC = props => (
     <div className = 'info'>
+        {props.children}
+
         <style jsx>
             {`
                 .info {
@@ -12,8 +14,5 @@ const InfoBox = ({ children }) => (
                 }
             `}
         </style>
-        {children}
     </div>
 );
-
-export default InfoBox;

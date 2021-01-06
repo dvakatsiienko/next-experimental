@@ -2,16 +2,14 @@
 import { NextPage } from 'next';
 
 /* Components */
-import { Layout } from '@/components/Layout';
-import { Nav } from '@/components/Nav';
-import InfoBox from '@/components/apollo/InfoBox';
-import Submit from '@/components/apollo/Submit';
-import PostList from '@/components/apollo/PostList';
+import { Layout, Nav } from '@/components';
+import { PostList, InfoBox, Submit } from '@/features/apollo';
 
 const ApolloSSG: NextPage = () => {
     return (
         <Layout>
             <Nav />
+
             <InfoBox>
                 ℹ️ This example shows how to disable apollos query fetching on
                 the server. If you <a href = '/client-only'>reload</a> this page,
@@ -26,6 +24,7 @@ const ApolloSSG: NextPage = () => {
                 </a>
                 .
             </InfoBox>
+
             <Submit />
             <PostList />
         </Layout>

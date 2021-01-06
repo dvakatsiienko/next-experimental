@@ -1,41 +1,47 @@
-import { allPostsQueryVars } from './PostList';
+/* Core */
+import { gql as tag } from '@apollo/client';
 
 /* Instruments */
 import * as gql from '@/graphql';
 
-export default function Submit() {
+export const Submit: React.FC = () => {
     const [ createPost, { loading }] = gql.useCreatePostMutation();
 
-    const handleSubmit = event => {
+    const submitForm = event => {
         event.preventDefault();
+
         const form = event.target;
         const formData = new window.FormData(form);
-        const title = formData.get('title');
-        const url = formData.get('url');
+        const title = formData.get('title') as string;
+        const url = formData.get('url') as string;
         form.reset();
 
         createPost({
             variables: { title, url },
             update:    (cache, { data: { createPost } }) => {
-                const data = cache.readQuery<gql.AllPostsQuery>({
-                    query:     gql.AllPostsDocument,
-                    variables: allPostsQueryVars,
-                });
+                cache.modify({
+                    fields: {
+                        allPosts(existingPosts = []) {
+                            const newPostRef = cache.writeFragment({
+                                data:     createPost,
+                                fragment: tag`
+                                    fragment NewPost on allPosts {
+                                        id
+                                        type
+                                    }
+                                `,
+                            });
 
-                cache.writeQuery<gql.AllPostsQuery>({
-                    query: gql.AllPostsDocument,
-                    data:  {
-                        ...data,
-                        allPosts: [ createPost, ...data.allPosts ],
+                            return [ newPostRef, ...existingPosts ];
+                        },
                     },
-                    variables: allPostsQueryVars,
                 });
             },
         });
     };
 
     return (
-        <form onSubmit = { handleSubmit }>
+        <form onSubmit = { submitForm }>
             <h1>Submit</h1>
             <input
                 required name = 'title' placeholder = 'title'
@@ -48,6 +54,7 @@ export default function Submit() {
             <button disabled = { loading } type = 'submit'>
                 Submit
             </button>
+
             <style jsx>
                 {`
                     form {
@@ -55,9 +62,11 @@ export default function Submit() {
                         padding-bottom: 20px;
                         margin-bottom: 20px;
                     }
+
                     h1 {
                         font-size: 20px;
                     }
+
                     input {
                         display: block;
                         margin-bottom: 10px;
@@ -66,4 +75,4 @@ export default function Submit() {
             </style>
         </form>
     );
-}
+};

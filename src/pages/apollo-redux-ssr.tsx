@@ -3,18 +3,15 @@ import { NextPage, GetServerSideProps } from 'next';
 import { useDispatch } from 'react-redux';
 
 /* Components */
-import { Layout } from '@/components/Layout';
-import { Nav } from '@/components/Nav';
-import Clock from '@/components/redux/Clock';
-import Counter from '@/components/redux/Counter';
-import Submit from '@/components/apollo/Submit';
-import PostList from '@/components/apollo/PostList';
+import { Layout, Nav } from '@/components';
+import { PostList, Submit } from '@/features/apollo';
+import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
 import * as gql from '@/graphql';
 import { useInterval } from '@/hooks';
 import { initApollo } from '@/lib/apollo';
-import { allPostsQueryVars } from '@/components/apollo/PostList';
+import { allPostsQueryVars } from '@/features/apollo/PostList';
 
 const ApolloReduxSSR: NextPage = () => {
     // Tick the time every second

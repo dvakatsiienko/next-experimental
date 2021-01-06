@@ -2,16 +2,13 @@
 import { NextPage, GetServerSideProps } from 'next';
 
 /* Components */
-import { Layout } from '@/components/Layout';
-import { Nav } from '@/components/Nav';
-import InfoBox from '@/components/apollo/InfoBox';
-import Submit from '@/components/apollo/Submit';
-import PostList from '@/components/apollo/PostList';
+import { Layout, Nav } from '@/components';
+import { PostList, InfoBox, Submit } from '@/features/apollo';
 
 /* Instruments */
 import * as gql from '@/graphql';
 import { initApollo } from '@/lib/apollo';
-import { allPostsQueryVars } from '@/components/apollo/PostList';
+import { allPostsQueryVars } from '@/features/apollo/PostList';
 
 const ApolloSSR: NextPage = () => {
     return (

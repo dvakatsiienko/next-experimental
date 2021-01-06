@@ -1,26 +1,16 @@
+/* Core */
 import { useSelector, shallowEqual } from 'react-redux';
 
-const useClock = () => {
-    return useSelector(
-        state => ({
-            lastUpdate: state.lastUpdate,
-            light:      state.light,
-        }),
-        shallowEqual,
-    );
-};
+/* Instruments */
+import { State } from '@/lib/redux';
 
-const formatTime = time => {
-    // cut off except hh:mm:ss
-    return new Date(time).toJSON().slice(11, 19);
-};
-
-const Clock = () => {
+export const Clock = () => {
     const { lastUpdate, light } = useClock();
 
     return (
         <div className = { light ? 'light' : '' }>
             {formatTime(lastUpdate)}
+
             <style jsx>
                 {`
                     div {
@@ -31,6 +21,7 @@ const Clock = () => {
                         background-color: #000;
                         margin-top: 15px;
                     }
+
                     .light {
                         background-color: #999;
                     }
@@ -40,4 +31,18 @@ const Clock = () => {
     );
 };
 
-export default Clock;
+/* Helpers */
+function useClock() {
+    return useSelector(
+        (state: State) => ({
+            lastUpdate: state.lastUpdate,
+            light:      state.light,
+        }),
+        shallowEqual,
+    );
+}
+
+function formatTime(time) {
+    // cut off except hh:mm:ss
+    return new Date(time).toJSON().slice(11, 19);
+}
