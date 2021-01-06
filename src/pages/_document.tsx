@@ -1,12 +1,10 @@
 /* Core */
 import Document, { DocumentContext } from 'next/document';
 import { ServerStyleSheet as StyledServerStyleSheet } from 'styled-components';
-import { ServerStyleSheets as MuiServerStyleSheet } from '@material-ui/core/styles';
 
 export default class extends Document {
     static async getInitialProps(ctx: DocumentContext) {
         const styledComponentsStylesheet = new StyledServerStyleSheet();
-        const muiStylesheet = new MuiServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
 
         try {
@@ -14,7 +12,7 @@ export default class extends Document {
                 return originalRenderPage({
                     enhanceApp: App => props => {
                         const styledSheetResult = styledComponentsStylesheet.collectStyles(
-                            muiStylesheet.collect(<App { ...props } />),
+                            <App { ...props } />,
                         );
 
                         return styledSheetResult;
@@ -30,7 +28,6 @@ export default class extends Document {
                     <>
                         {initialProps.styles}
                         {styledComponentsStylesheet.getStyleElement()}
-                        {muiStylesheet.getStyleElement()}
                     </>
                 ),
             };

@@ -1,11 +1,12 @@
 /* Core */
 import { useEffect, useRef } from 'react';
 
-export const useInterval = (callback, delay) => {
+export const useInterval = (callback, delay: number) => {
     const savedCallback = useRef();
     useEffect(() => {
         savedCallback.current = callback;
     }, [ callback ]);
+
     useEffect(() => {
         // @ts-ignore
         const handler = (...args) => savedCallback.current(...args);

@@ -1,9 +1,9 @@
 [development]
-IE 11
 last 1 chrome version
+last 1 safari version
+last 1 firefox version
 
 [production]
-IE 11
 last 1 chrome version
 last 1 safari version
 last 1 firefox version

@@ -2,18 +2,13 @@
 import { NetworkStatus } from '@apollo/client';
 
 /* Components */
-import ErrorMessage from './ErrorMessage';
-import PostUpvoter from './PostUpvoter';
+import { ErrorMessage } from './ErrorMessage';
+import { PostUpvoter } from './PostUpvoter';
 
 /* Instruments */
 import * as gql from '@/graphql';
 
-export const allPostsQueryVars = {
-    skip:  0,
-    first: 10,
-};
-
-export default function PostList() {
+export const PostList: React.FC = () => {
     const allPostsQueryResult = gql.useAllPostsQuery({
         variables:                   allPostsQueryVars,
         notifyOnNetworkStatusChange: true,
@@ -66,6 +61,7 @@ export default function PostList() {
                     </li>
                 ))}
             </ul>
+
             {areMorePosts && (
                 <button
                     disabled = { loadingMorePosts }
@@ -74,19 +70,23 @@ export default function PostList() {
                     {loadingMorePosts ? 'Loading...' : 'Show More'}
                 </button>
             )}
+
             <style jsx>
                 {`
                     section {
                         padding-bottom: 20px;
                     }
+
                     li {
                         display: block;
                         margin-bottom: 10px;
                     }
+
                     div {
                         align-items: center;
                         display: flex;
                     }
+
                     a {
                         font-size: 14px;
                         margin-right: 10px;
@@ -94,14 +94,17 @@ export default function PostList() {
                         padding-bottom: 0;
                         border: 0;
                     }
+
                     span {
                         font-size: 14px;
                         margin-right: 5px;
                     }
+
                     ul {
                         margin: 0;
                         padding: 0;
                     }
+
                     button:before {
                         align-self: center;
                         border-style: solid;
@@ -117,4 +120,9 @@ export default function PostList() {
             </style>
         </section>
     );
-}
+};
+
+export const allPostsQueryVars = {
+    skip:  0,
+    first: 10,
+};

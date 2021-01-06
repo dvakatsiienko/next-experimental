@@ -1,7 +1,8 @@
-export default function ErrorMessage({ message }) {
+export const ErrorMessage: React.FC<ErrorMessageProps> = props => {
     return (
         <aside>
-            {message}
+            {props.message}
+
             <style jsx>
                 {`
                     aside {
@@ -14,4 +15,9 @@ export default function ErrorMessage({ message }) {
             </style>
         </aside>
     );
+};
+
+/* Types */
+interface ErrorMessageProps {
+    message: string;
 }

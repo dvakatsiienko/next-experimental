@@ -16,7 +16,7 @@ const About: NextPage = () => {
 };
 
 const H1 = styled.h1`
-    color: ${props => props.theme.palette.primary.main};
+    color: ${props => props.theme.color2};
 `;
 
 export default About;
