@@ -23,7 +23,7 @@ const ReduxPage: NextPage = () => {
 
     return (
         <Layout>
-            <Nav />
+            <Nav title = 'Redux' />
             <Clock />
             <Counter />
         </Layout>

@@ -1,22 +1,15 @@
 /* Core */
 import { NextPage } from 'next';
-import styled from 'styled-components';
 
 /* Components */
-import { Layout } from '@/components/Layout';
-import { Nav } from '@/components/Nav';
+import { Layout, Nav } from '@/components';
 
 const About: NextPage = () => {
     return (
         <Layout>
-            <Nav />
-            <H1>About</H1>
+            <Nav title = 'About' />
         </Layout>
     );
 };
-
-const H1 = styled.h1`
-    color: ${props => props.theme.color2};
-`;
 
 export default About;

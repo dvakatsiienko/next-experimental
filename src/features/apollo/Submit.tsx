@@ -1,5 +1,6 @@
 /* Core */
 import { gql as tag } from '@apollo/client';
+import styled from 'styled-components';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -41,38 +42,33 @@ export const Submit: React.FC = () => {
     };
 
     return (
-        <form onSubmit = { submitForm }>
-            <h1>Submit</h1>
-            <input
+        <Form onSubmit = { submitForm }>
+            <Title>Create Post</Title>
+            <Field
                 required name = 'title' placeholder = 'title'
                 type = 'text'
             />
-            <input
+            <Field
                 required name = 'url' placeholder = 'url'
                 type = 'url'
             />
             <button disabled = { loading } type = 'submit'>
                 Submit
             </button>
-
-            <style jsx>
-                {`
-                    form {
-                        border-bottom: 1px solid #ececec;
-                        padding-bottom: 20px;
-                        margin-bottom: 20px;
-                    }
-
-                    h1 {
-                        font-size: 20px;
-                    }
-
-                    input {
-                        display: block;
-                        margin-bottom: 10px;
-                    }
-                `}
-            </style>
-        </form>
+        </Form>
     );
 };
+
+/* Styles */
+const Form = styled.form`
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ececec;
+`;
+const Title = styled.h1`
+    font-size: 20px;
+`;
+const Field = styled.input`
+    display: block;
+    margin-bottom: 10px;
+`;

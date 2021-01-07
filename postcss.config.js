@@ -3,13 +3,13 @@
 module.exports = {
     plugins: {
         'postcss-preset-env': {
-            stage: 0,
+            stage:    0,
             features: {
                 'custom-media-queries': {
                     importFrom: [
                         {
                             customMedia: {
-                                '--phonePortrait': '(width <= 414px)',
+                                '--phonePortrait':  '(width <= 414px)',
                                 '--phoneLandscape':
                                     '(width >= 415px) and (width <= 667px)',
                                 '--tabletPortrait':

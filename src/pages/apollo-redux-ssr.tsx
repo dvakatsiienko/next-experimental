@@ -11,7 +11,7 @@ import { Clock, Counter } from '@/features/redux';
 import * as gql from '@/graphql';
 import { useInterval } from '@/hooks';
 import { initApollo } from '@/lib/apollo';
-import { allPostsQueryVars } from '@/features/apollo/PostList';
+import { allPostsQueryVars } from '@/features/apollo';
 
 const ApolloReduxSSR: NextPage = () => {
     // Tick the time every second
@@ -27,7 +27,7 @@ const ApolloReduxSSR: NextPage = () => {
 
     return (
         <Layout>
-            <Nav />
+            <Nav title = 'Apollo Redux SSR' />
 
             <Clock />
             <Counter />

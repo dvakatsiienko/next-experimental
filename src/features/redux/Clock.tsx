@@ -1,47 +1,40 @@
 /* Core */
 import { useSelector, shallowEqual } from 'react-redux';
+import styled from 'styled-components';
 
 /* Instruments */
 import { State } from '@/lib/redux';
 
 export const Clock = () => {
-    const { lastUpdate, light } = useClock();
-
-    return (
-        <div className = { light ? 'light' : '' }>
-            {formatTime(lastUpdate)}
-
-            <style jsx>
-                {`
-                    div {
-                        padding: 15px;
-                        display: inline-block;
-                        color: #82fa58;
-                        font: 50px menlo, monaco, monospace;
-                        background-color: #000;
-                        margin-top: 15px;
-                    }
-
-                    .light {
-                        background-color: #999;
-                    }
-                `}
-            </style>
-        </div>
-    );
-};
-
-/* Helpers */
-function useClock() {
-    return useSelector(
+    const { lastUpdate, light } = useSelector(
         (state: State) => ({
             lastUpdate: state.lastUpdate,
             light:      state.light,
         }),
         shallowEqual,
     );
-}
 
+    return (
+        <Container $light = { light ? true : false }>
+            {formatTime(lastUpdate)}
+        </Container>
+    );
+};
+
+/* Styles */
+interface ContainerProps {
+    $light: boolean;
+}
+const Container = styled.div<ContainerProps>`
+    display: inline-block;
+    padding: 15px;
+    margin-top: 15px;
+    font: 50px menlo, monaco, monospace;
+    color: #82fa58;
+    background-color: ${props => props.$light ? '#999' : '#000'};
+`;
+
+/* Helpers */
 function formatTime(time) {
     // cut off except hh:mm:ss
     return new Date(time).toJSON().slice(11, 19);

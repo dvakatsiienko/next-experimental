@@ -3,3 +3,4 @@ export * from './InfoBox';
 export * from './PostUpvoter';
 export * from './Submit';
 export * from './ErrorMessage';
+export * from './helpers';
