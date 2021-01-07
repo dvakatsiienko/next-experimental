@@ -2,16 +2,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export const Nav: React.FC = () => {
+export const Nav: React.FC<NavProps> = props => {
     return (
         <>
             <nav>
                 <Link href = '/'>
-                    <StyledLink>Index</StyledLink>
-                </Link>
-                &nbsp;|&nbsp;
-                <Link href = '/about'>
-                    <StyledLink>About</StyledLink>
+                    <StyledLink>Home</StyledLink>
                 </Link>
                 &nbsp;|&nbsp;
                 <Link href = '/redux'>
@@ -33,12 +29,18 @@ export const Nav: React.FC = () => {
                 <Link href = '/apollo-redux-ssr'>
                     <StyledLink>Apollo Redux SSR</StyledLink>
                 </Link>
+                &nbsp;|&nbsp;
+                <Link href = '/about'>
+                    <StyledLink>About</StyledLink>
+                </Link>
             </nav>
             <hr />
+            <H1>{props.title}</H1>
         </>
     );
 };
 
+/* Styles */
 const StyledLink = styled.a`
     font-family: roboto mono, system-ui;
     font-size: 20px;
@@ -50,3 +52,13 @@ const StyledLink = styled.a`
         color: rebeccapurple;
     }
 `;
+
+const H1 = styled.h1`
+    font-size: 42px;
+    color: ${props => props.theme.color2};
+`;
+
+/* Types */
+interface NavProps {
+    title: string;
+}

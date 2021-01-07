@@ -8,7 +8,7 @@ import { PostList, InfoBox, Submit } from '@/features/apollo';
 const ApolloSSG: NextPage = () => {
     return (
         <Layout>
-            <Nav />
+            <Nav title = 'Apollo SSG' />
 
             <InfoBox>
                 ℹ️ This example shows how to disable apollos query fetching on

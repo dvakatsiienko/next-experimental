@@ -8,12 +8,12 @@ import { PostList, InfoBox, Submit } from '@/features/apollo';
 /* Instruments */
 import * as gql from '@/graphql';
 import { initApollo } from '@/lib/apollo';
-import { allPostsQueryVars } from '@/features/apollo/PostList';
+import { allPostsQueryVars } from '@/features/apollo';
 
 const ApolloSSR: NextPage = () => {
     return (
         <Layout>
-            <Nav />
+            <Nav title = 'Apollo SSR' />
             <InfoBox>
                 ℹ️ This example shows how to fetch all initial apollo queries on
                 the server. If you <a href = '/'>reload</a> this page you
