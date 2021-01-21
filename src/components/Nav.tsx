@@ -45,7 +45,7 @@ const StyledLink = styled.a`
     font-family: roboto mono, system-ui;
     font-size: 20px;
     font-weight: 700;
-    color: ${props => props.theme.color1};
+    color: var(--color-1);
     cursor: pointer;
 
     &:hover {
@@ -55,7 +55,7 @@ const StyledLink = styled.a`
 
 const H1 = styled.h1`
     font-size: 42px;
-    color: ${props => props.theme.color2};
+    color: var(--color-2);
 `;
 
 /* Types */
