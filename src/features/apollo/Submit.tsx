@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import * as gql from '@/graphql';
 
 export const Submit: React.FC = () => {
-    const [ createPost, { loading }] = gql.useCreatePostMutation();
+    const [createPost, { loading }] = gql.useCreatePostMutation();
 
     const submitForm = event => {
         event.preventDefault();
@@ -19,12 +19,12 @@ export const Submit: React.FC = () => {
 
         createPost({
             variables: { title, url },
-            update:    (cache, { data: { createPost } }) => {
+            update: (cache, { data: { createPost } }) => {
                 cache.modify({
                     fields: {
                         allPosts(existingPosts = []) {
                             const newPostRef = cache.writeFragment({
-                                data:     createPost,
+                                data: createPost,
                                 fragment: tag`
                                     fragment NewPost on allPosts {
                                         id
@@ -33,7 +33,7 @@ export const Submit: React.FC = () => {
                                 `,
                             });
 
-                            return [ newPostRef, ...existingPosts ];
+                            return [newPostRef, ...existingPosts];
                         },
                     },
                 });
@@ -42,17 +42,11 @@ export const Submit: React.FC = () => {
     };
 
     return (
-        <Form onSubmit = { submitForm }>
+        <Form onSubmit={submitForm}>
             <Title>Create Post</Title>
-            <Field
-                required name = 'title' placeholder = 'title'
-                type = 'text'
-            />
-            <Field
-                required name = 'url' placeholder = 'url'
-                type = 'url'
-            />
-            <button disabled = { loading } type = 'submit'>
+            <Field required name="title" placeholder="title" type="text" />
+            <Field required name="url" placeholder="url" type="url" />
+            <button disabled={loading} type="submit">
                 Submit
             </button>
         </Form>

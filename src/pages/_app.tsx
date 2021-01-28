@@ -8,7 +8,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 
 /* Instruments */
-import { theme } from '@/theme';
+import '@/theme/index.css';
 import { useStore } from '@/lib/redux';
 import { useApollo } from '@/lib/apollo';
 
@@ -19,7 +19,7 @@ const App: React.FC<AppProps> = props => {
     return (
         <ApolloProvider client = { apolloClient }>
             <ReduxProvider store = { store }>
-                <StyledComponentsProvider theme = { theme }>
+                <StyledComponentsProvider theme = {{}}>
                     <Head>
                         <link href = '/favicon.ico' rel = 'icon' />
                         <title>Next Experimental</title>
