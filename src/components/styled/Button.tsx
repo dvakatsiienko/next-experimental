@@ -1,7 +1,7 @@
 /* Core */
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
     padding: 8px;
     font-size: 24px;
     color: var(--color-2);
@@ -15,4 +15,19 @@ export const Button = styled.button`
     &:hover {
         color: var(--color-4);
     }
+
+    ${props =>
+        props.$isFetching &&
+        `
+        cursor: not-allowed;
+        color: grey;
+
+        &:hover {
+            color: grey;
+        }
+    `}
 `;
+
+interface ButtonProps {
+    $isFetching?: boolean;
+}

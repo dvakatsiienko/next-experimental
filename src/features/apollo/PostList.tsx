@@ -4,7 +4,13 @@ import styled from 'styled-components';
 
 /* Components */
 import { ErrorMessage } from './ErrorMessage';
-import { UnorderedList, ListItem, Link, Button } from '@/components/styled';
+import {
+    UnorderedList,
+    ListItem,
+    Link,
+    Button,
+    Accent
+} from '@/components/styled';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -15,10 +21,15 @@ export const PostList: React.FC = () => {
         variables:                   allPostsQueryVars,
         notifyOnNetworkStatusChange: true,
     });
-    const [ votePostMutation ] = gql.useVotePostMutation();
+    const [
+        votePostMutation,
+        votePostMutationOptions,
+    ] = gql.useVotePostMutation();
 
     const votePost = (id: string) => {
-        votePostMutation({ variables: { id } });
+        if (!votePostMutationOptions.loading) {
+            votePostMutation({ variables: { id } });
+        }
     };
 
     const loadingMorePosts =
@@ -62,17 +73,22 @@ export const PostList: React.FC = () => {
                     <ListItem key = { post.id }>
                         <span css = 'color: var(--color-2);'>{index + 1}. </span>
                         <Link
-                            css = 'margin-right: 10px;'
                             href = { post.url }
                             rel = 'noopener noreferrer'
                             target = '_blank'
                         >
                             {post.title}
                         </Link>
+                        <Accent css = 'margin-right: 10px;'>
+                            {post.votes} votes
+                        </Accent>
 
-                        <Button onClick = { () => votePost(post.id) }>
-                            {post.votes}
-                        </Button>
+                        <PostUpvoter
+                            $isFetching = { votePostMutationOptions.loading }
+                            onClick = { () => votePost(post.id) }
+                        >
+                            &#x25B2;
+                        </PostUpvoter>
                     </ListItem>
                 ))}
             </UnorderedList>
@@ -92,4 +108,9 @@ export const PostList: React.FC = () => {
 /* Styles */
 const Container = styled.section`
     padding-bottom: 20px;
+`;
+const PostUpvoter = styled(Button)`
+    padding: 2px 6px;
+    font-size: 16px;
+    border: 2px solid currentColor;
 `;

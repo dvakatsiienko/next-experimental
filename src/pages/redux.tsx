@@ -8,16 +8,18 @@ import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
 import { useInterval } from '@/hooks';
+import { timerSlice } from '@/lib/redux/slices';
 
 const ReduxPage: NextPage = () => {
     const dispatch = useDispatch();
 
     useInterval(() => {
-        dispatch({
-            type:       'TICK',
-            light:      true,
-            lastUpdate: Date.now(),
-        });
+        dispatch(
+            timerSlice.actions.tick({
+                light:      true,
+                lastUpdate: Date.now(),
+            }),
+        );
     }, 1000);
 
     return (

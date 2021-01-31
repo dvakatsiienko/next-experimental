@@ -6,27 +6,15 @@ import styled from 'styled-components';
 import { H6, Button } from '@/components/styled';
 
 /* Instruments */
-import { State } from '@/lib/redux';
+import { timerSlice } from '@/lib/redux/slices';
 
 export const Counter = () => {
-    const count = useSelector((state: State) => state.count);
-
     const dispatch = useDispatch();
+    const count = useSelector(state => state.count);
 
-    const increment = () =>
-        dispatch({
-            type: 'INCREMENT',
-        });
-
-    const decrement = () =>
-        dispatch({
-            type: 'DECREMENT',
-        });
-
-    const reset = () =>
-        dispatch({
-            type: 'RESET',
-        });
+    const increment = () => dispatch(timerSlice.actions.increment());
+    const decrement = () => dispatch(timerSlice.actions.decrement());
+    const reset = () => dispatch(timerSlice.actions.reset());
 
     return (
         <div>
