@@ -1,6 +1,5 @@
 /* Core */
 import { NextPage } from 'next';
-import { useDispatch } from 'react-redux';
 
 /* Components */
 import { Layout, Nav } from '@/components';
@@ -9,6 +8,7 @@ import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
 import { useInterval } from '@/hooks';
+import { useDispatch } from '@/lib/redux';
 import { timerSlice } from '@/lib/redux/slices';
 
 const ApolloReduxPage: NextPage = () => {

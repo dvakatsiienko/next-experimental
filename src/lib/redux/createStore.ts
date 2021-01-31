@@ -1,26 +1,10 @@
 /* Core */
-import {
-    configureStore,
-    getDefaultMiddleware,
-    Middleware
-} from '@reduxjs/toolkit';
+import { configureStore, Middleware } from '@reduxjs/toolkit';
 
-/* Reducers */
-import { initialState } from './slices';
+/* Instruments */
 import { rootReducer } from './rootReducer';
 
-const middleware: Middleware[] = [
-    ...getDefaultMiddleware({
-        serializableCheck: false,
-        immutableCheck:    false,
-    }),
-];
-
-export interface State {
-    lastUpdate: number;
-    light: boolean;
-    count: number;
-}
+const middleware: Middleware[] = [];
 
 if (__DEV__) {
     const { createLogger } = require('redux-logger');
@@ -42,16 +26,14 @@ if (__DEV__) {
     middleware.push(logger);
 }
 
-export const createStore = (preloadedState = initialState) => {
+export const createStore = (preloadedState = {}) => {
     return configureStore({
         reducer:    rootReducer,
         preloadedState,
-        middleware: [
-            ...getDefaultMiddleware({
+        middleware: getDefaultMiddleware =>
+            getDefaultMiddleware({
                 immutableCheck:    false,
                 serializableCheck: false,
-            }),
-            ...middleware,
-        ],
+            }).prepend(middleware),
     });
 };

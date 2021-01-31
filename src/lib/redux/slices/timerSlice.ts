@@ -1,7 +1,7 @@
 /* Core */
 import { createSlice } from '@reduxjs/toolkit';
 
-export const initialState = {
+const initialState = {
     lastUpdate: 0,
     light:      false,
     count:      0,
