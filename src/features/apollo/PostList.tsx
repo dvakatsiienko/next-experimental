@@ -5,6 +5,7 @@ import styled from 'styled-components';
 /* Components */
 import { ErrorMessage } from './ErrorMessage';
 import { PostUpVoter } from './PostUpvoter';
+import { UnorderedList, ListItem, Link, Button } from '@/components/styled';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -52,25 +53,31 @@ export const PostList: React.FC = () => {
 
     return (
         <Container>
-            <PostUl>
+            <UnorderedList $flex-direction = 'column'>
                 {allPosts.map((post, index) => (
-                    <PostLi key = { post.id }>
-                        <div>
-                            <span>{index + 1}. </span>
-                            <a href = { post.url }>{post.title}</a>
-                            <PostUpVoter id = { post.id } votes = { post.votes } />
-                        </div>
-                    </PostLi>
+                    <ListItem key = { post.id }>
+                        <span css = 'color: var(--color-2);'>{index + 1}. </span>
+                        <Link
+                            css = 'margin-right: 10px;'
+                            href = { post.url }
+                            rel = 'noopener noreferrer'
+                            target = '_blank'
+                        >
+                            {post.title}
+                        </Link>
+
+                        <PostUpVoter id = { post.id } votes = { post.votes } />
+                    </ListItem>
                 ))}
-            </PostUl>
+            </UnorderedList>
 
             {areMorePosts && (
-                <LoadMorePostsButton
+                <Button
                     disabled = { loadingMorePosts }
                     onClick = { () => loadMorePosts() }
                 >
                     {loadingMorePosts ? 'Loading...' : 'Show More'}
-                </LoadMorePostsButton>
+                </Button>
             )}
         </Container>
     );
@@ -79,44 +86,4 @@ export const PostList: React.FC = () => {
 /* Styles */
 const Container = styled.section`
     padding-bottom: 20px;
-`;
-const PostUl = styled.ul`
-    padding: 0;
-    margin: 0;
-`;
-const PostLi = styled.li`
-    display: block;
-    margin-bottom: 10px;
-
-    & div {
-        display: flex;
-        align-items: center;
-
-        & span {
-            margin-right: 5px;
-            font-size: 14px;
-        }
-
-        & a {
-            padding-bottom: 0;
-            margin-right: 10px;
-            font-size: 14px;
-            text-decoration: none;
-            border: 0;
-        }
-    }
-`;
-const LoadMorePostsButton = styled.button`
-    cursor: pointer;
-
-    &::before {
-        align-self: center;
-        width: 0;
-        height: 0;
-        margin-right: 5px;
-        content: '';
-        border-color: #ffffff transparent transparent transparent;
-        border-style: solid;
-        border-width: 6px 4px 0 4px;
-    }
 `;

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 /* Components */
 import { Layout, Nav } from '@/components';
-import { PostList, Submit } from '@/features/apollo';
+import { PostList, CreatePostForm } from '@/features/apollo';
 import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
@@ -29,7 +29,7 @@ const ApolloReduxPage: NextPage = () => {
             <Clock />
             <Counter />
 
-            <Submit />
+            <CreatePostForm />
             <PostList />
         </Layout>
     );

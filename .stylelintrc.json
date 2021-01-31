@@ -10,8 +10,7 @@
         "stylelint-selector-no-empty",
         "stylelint-declaration-block-no-ignored-properties",
         "stylelint-value-no-unknown-custom-properties",
-        "stylelint-use-nesting",
-        "stylelint-high-performance-animation"
+        "stylelint-use-nesting"
     ],
     "rules": {
         "order/order": ["custom-properties", "declarations"],
@@ -24,7 +23,6 @@
             }
         ],
         "csstools/use-nesting": "always",
-        "plugin/no-low-performance-animation-properties": true,
         "indentation": 4
     }
 }

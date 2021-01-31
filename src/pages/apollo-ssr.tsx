@@ -3,7 +3,8 @@ import { NextPage, GetServerSideProps } from 'next';
 
 /* Components */
 import { Layout, Nav } from '@/components';
-import { PostList, InfoBox, Submit } from '@/features/apollo';
+import { Paragraph, Link } from '@/components/styled';
+import { PostList, CreatePostForm } from '@/features/apollo';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -14,21 +15,23 @@ const ApolloSSR: NextPage = () => {
     return (
         <Layout>
             <Nav title = 'Apollo SSR' />
-            <InfoBox>
+
+            <Paragraph>
                 ℹ️ This example shows how to fetch all initial apollo queries on
-                the server. If you <a href = '/'>reload</a> this page you
+                the server. If you <Link href = '/'>reload</Link> this page you
                 won&apos;t see a loader since Apollo fetched all needed data on
                 the server. This prevents{' '}
-                <a
+                <Link
                     href = 'https://nextjs.org/blog/next-9#automatic-static-optimization'
                     rel = 'noopener noreferrer'
                     target = '_blank'
                 >
                     automatic static optimization
-                </a>{' '}
+                </Link>{' '}
                 in favour of full Server-Side-Rendering.
-            </InfoBox>
-            <Submit />
+            </Paragraph>
+
+            <CreatePostForm />
             <PostList />
         </Layout>
     );

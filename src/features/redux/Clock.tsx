@@ -35,7 +35,6 @@ const Container = styled.div<ContainerProps>`
 `;
 
 /* Helpers */
-function formatTime(time) {
-    // cut off except hh:mm:ss
+function formatTime(time: number) {
     return new Date(time).toJSON().slice(11, 19);
 }

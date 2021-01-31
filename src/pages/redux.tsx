@@ -10,7 +10,6 @@ import { Clock, Counter } from '@/features/redux';
 import { useInterval } from '@/hooks';
 
 const ReduxPage: NextPage = () => {
-    // Tick the time every second
     const dispatch = useDispatch();
 
     useInterval(() => {
