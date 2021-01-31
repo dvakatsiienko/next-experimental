@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { concatPagination } from '@apollo/client/utilities';
 import merge from 'deepmerge';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash';
 
 let apolloClient = null;
 

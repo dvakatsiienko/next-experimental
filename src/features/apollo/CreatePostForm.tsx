@@ -2,11 +2,14 @@
 import { gql as tag } from '@apollo/client';
 import styled from 'styled-components';
 
+/* Components */
+import { H6, Button } from '@/components/styled';
+
 /* Instruments */
 import * as gql from '@/graphql';
 
-export const Submit: React.FC = () => {
-    const [createPost, { loading }] = gql.useCreatePostMutation();
+export const CreatePostForm: React.FC = () => {
+    const [ createPost, { loading }] = gql.useCreatePostMutation();
 
     const submitForm = event => {
         event.preventDefault();
@@ -19,12 +22,12 @@ export const Submit: React.FC = () => {
 
         createPost({
             variables: { title, url },
-            update: (cache, { data: { createPost } }) => {
+            update:    (cache, { data: { createPost } }) => {
                 cache.modify({
                     fields: {
                         allPosts(existingPosts = []) {
                             const newPostRef = cache.writeFragment({
-                                data: createPost,
+                                data:     createPost,
                                 fragment: tag`
                                     fragment NewPost on allPosts {
                                         id
@@ -33,7 +36,7 @@ export const Submit: React.FC = () => {
                                 `,
                             });
 
-                            return [newPostRef, ...existingPosts];
+                            return [ newPostRef, ...existingPosts ];
                         },
                     },
                 });
@@ -42,13 +45,20 @@ export const Submit: React.FC = () => {
     };
 
     return (
-        <Form onSubmit={submitForm}>
-            <Title>Create Post</Title>
-            <Field required name="title" placeholder="title" type="text" />
-            <Field required name="url" placeholder="url" type="url" />
-            <button disabled={loading} type="submit">
+        <Form onSubmit = { submitForm }>
+            <H6>Create Post</H6>
+
+            <Field
+                required name = 'title' placeholder = 'Title'
+                type = 'text'
+            />
+            <Field
+                required name = 'url' placeholder = 'Url'
+                type = 'url'
+            />
+            <Button disabled = { loading } type = 'submit'>
                 Submit
-            </button>
+            </Button>
         </Form>
     );
 };
@@ -59,10 +69,18 @@ const Form = styled.form`
     margin-bottom: 20px;
     border-bottom: 1px solid #ececec;
 `;
-const Title = styled.h1`
-    font-size: 20px;
-`;
 const Field = styled.input`
     display: block;
+    padding: 8px;
     margin-bottom: 10px;
+    font-size: 24px;
+    color: var(--color-2);
+    background-color: transparent;
+    border: 1px solid currentColor;
+    outline: none;
+    transition: border-color 0.1s ease;
+
+    &:focus {
+        border: 1px solid var(--color-5);
+    }
 `;
