@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 /* Components */
 import { ErrorMessage } from './ErrorMessage';
-import { PostUpVoter } from './PostUpvoter';
 import { UnorderedList, ListItem, Link, Button } from '@/components/styled';
 
 /* Instruments */
@@ -16,6 +15,11 @@ export const PostList: React.FC = () => {
         variables:                   allPostsQueryVars,
         notifyOnNetworkStatusChange: true,
     });
+    const [ votePostMutation ] = gql.useVotePostMutation();
+
+    const votePost = (id: string) => {
+        votePostMutation({ variables: { id } });
+    };
 
     const loadingMorePosts =
         allPostsQueryResult.networkStatus === NetworkStatus.fetchMore;
@@ -66,7 +70,9 @@ export const PostList: React.FC = () => {
                             {post.title}
                         </Link>
 
-                        <PostUpVoter id = { post.id } votes = { post.votes } />
+                        <Button onClick = { () => votePost(post.id) }>
+                            {post.votes}
+                        </Button>
                     </ListItem>
                 ))}
             </UnorderedList>
