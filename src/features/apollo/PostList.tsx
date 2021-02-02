@@ -79,10 +79,10 @@ export const PostList: React.FC = () => {
                         >
                             {post.title}
                         </Link>
+                        &nbsp;
                         <Accent css = 'margin-right: 10px;'>
                             {post.votes} votes
                         </Accent>
-
                         <PostUpvoter
                             $isFetching = { votePostMutationOptions.loading }
                             onClick = { () => votePost(post.id) }
