@@ -1,16 +1,13 @@
 /* Core */
-import { useSelector, shallowEqual } from 'react-redux';
+import { shallowEqual } from 'react-redux';
 import styled from 'styled-components';
 
 /* Instruments */
-import { State } from '@/lib/redux';
+import { useSelector } from '@/lib/redux';
 
 export const Clock = () => {
     const { lastUpdate, light } = useSelector(
-        (state: State) => ({
-            lastUpdate: state.lastUpdate,
-            light:      state.light,
-        }),
+        state => state.timer,
         shallowEqual,
     );
 

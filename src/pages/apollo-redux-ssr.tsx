@@ -11,18 +11,19 @@ import { Clock, Counter } from '@/features/redux';
 import * as gql from '@/graphql';
 import { useInterval } from '@/hooks';
 import { initApollo } from '@/lib/apollo';
+import { timerSlice } from '@/lib/redux/slices';
 import { allPostsQueryVars } from '@/features/apollo';
 
 const ApolloReduxSSR: NextPage = () => {
-    // Tick the time every second
     const dispatch = useDispatch();
 
     useInterval(() => {
-        dispatch({
-            type:       'TICK',
-            light:      true,
-            lastUpdate: Date.now(),
-        });
+        dispatch(
+            timerSlice.actions.tick({
+                light:      true,
+                lastUpdate: Date.now(),
+            }),
+        );
     }, 1000);
 
     return (

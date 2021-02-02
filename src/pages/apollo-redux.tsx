@@ -1,6 +1,5 @@
 /* Core */
 import { NextPage } from 'next';
-import { useDispatch } from 'react-redux';
 
 /* Components */
 import { Layout, Nav } from '@/components';
@@ -9,17 +8,19 @@ import { Clock, Counter } from '@/features/redux';
 
 /* Instruments */
 import { useInterval } from '@/hooks';
+import { useDispatch } from '@/lib/redux';
+import { timerSlice } from '@/lib/redux/slices';
 
 const ApolloReduxPage: NextPage = () => {
-    // Tick the time every second
     const dispatch = useDispatch();
 
     useInterval(() => {
-        dispatch({
-            type:       'TICK',
-            light:      true,
-            lastUpdate: Date.now(),
-        });
+        dispatch(
+            timerSlice.actions.tick({
+                light:      true,
+                lastUpdate: Date.now(),
+            }),
+        );
     }, 1000);
 
     return (
