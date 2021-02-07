@@ -4,13 +4,7 @@ import styled from 'styled-components';
 
 /* Components */
 import { ErrorMessage } from './ErrorMessage';
-import {
-    UnorderedList,
-    ListItem,
-    Link,
-    Button,
-    Accent
-} from '@/components/styled';
+import { Ul, Li, Link, Button, Accent } from '@/components/styled';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -40,19 +34,6 @@ export const PostList: React.FC = () => {
             variables: {
                 skip: allPosts.length,
             },
-            updateQuery: (previousResult, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                    return previousResult;
-                }
-
-                return {
-                    ...previousResult,
-                    allPosts: [
-                        ...previousResult.allPosts,
-                        ...fetchMoreResult.allPosts,
-                    ],
-                };
-            },
         });
     };
 
@@ -68,9 +49,9 @@ export const PostList: React.FC = () => {
 
     return (
         <Container>
-            <UnorderedList $flex-direction = 'column'>
+            <Ul $flex-direction = 'column'>
                 {allPosts.map((post, index) => (
-                    <ListItem key = { post.id }>
+                    <Li key = { post.id }>
                         <span css = 'color: var(--color-2);'>{index + 1}. </span>
                         <Link
                             href = { post.url }
@@ -89,9 +70,9 @@ export const PostList: React.FC = () => {
                         >
                             &#x25B2;
                         </PostUpvoter>
-                    </ListItem>
+                    </Li>
                 ))}
-            </UnorderedList>
+            </Ul>
 
             {areMorePosts && (
                 <Button

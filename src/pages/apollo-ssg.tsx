@@ -3,17 +3,17 @@ import { NextPage } from 'next';
 
 /* Components */
 import { Layout, Nav } from '@/components';
-import { Paragraph, Link } from '@/components/styled';
+import { P, Link } from '@/components/styled';
 import { PostList, CreatePostForm } from '@/features/apollo';
 
-const ApolloSSG: NextPage = () => {
+const ApolloSSGPage: NextPage = () => {
     return (
         <Layout>
             <Nav title = 'Apollo SSG' />
 
-            <Paragraph>
-                ℹ️ This example shows how to disable apollos query fetching on
-                the server. If you <Link href = '/client-only'>reload</Link> this
+            <P>
+                This example shows how to disable apollos query fetching on the
+                server. If you <Link href = '/client-only'>reload</Link> this
                 page, you will see a loader since Apollo didn&apos;t fetch any
                 data on the server. This allows{' '}
                 <Link
@@ -24,7 +24,7 @@ const ApolloSSG: NextPage = () => {
                     automatic static optimization
                 </Link>
                 .
-            </Paragraph>
+            </P>
 
             <CreatePostForm />
             <PostList />
@@ -32,4 +32,4 @@ const ApolloSSG: NextPage = () => {
     );
 };
 
-export default ApolloSSG;
+export default ApolloSSGPage;

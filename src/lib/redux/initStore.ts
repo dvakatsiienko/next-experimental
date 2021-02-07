@@ -1,7 +1,11 @@
 /* Instruments */
 import { createStore } from './createStore';
 
-let store = null;
+/**
+ * Server: always null.
+ * Client: null at first call, object on subsequent calls.
+ */
+export let store = null;
 
 export const initStore = preloadedState => {
     let _store = store ?? createStore(preloadedState);

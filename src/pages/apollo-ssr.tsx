@@ -3,7 +3,7 @@ import { NextPage, GetServerSideProps } from 'next';
 
 /* Components */
 import { Layout, Nav } from '@/components';
-import { Paragraph, Link } from '@/components/styled';
+import { P, Link } from '@/components/styled';
 import { PostList, CreatePostForm } from '@/features/apollo';
 
 /* Instruments */
@@ -11,13 +11,13 @@ import * as gql from '@/graphql';
 import { initApollo } from '@/lib/apollo';
 import { allPostsQueryVars } from '@/features/apollo';
 
-const ApolloSSR: NextPage = () => {
+const ApolloSSRPage: NextPage = () => {
     return (
         <Layout>
             <Nav title = 'Apollo SSR' />
 
-            <Paragraph>
-                ℹ️ This example shows how to fetch all initial apollo queries on
+            <P>
+                This example shows how to fetch all initial apollo queries on
                 the server. If you <Link href = '/'>reload</Link> this page you
                 won&apos;t see a loader since Apollo fetched all needed data on
                 the server. This prevents{' '}
@@ -29,7 +29,7 @@ const ApolloSSR: NextPage = () => {
                     automatic static optimization
                 </Link>{' '}
                 in favour of full Server-Side-Rendering.
-            </Paragraph>
+            </P>
 
             <CreatePostForm />
             <PostList />
@@ -52,4 +52,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
 };
 
-export default ApolloSSR;
+export default ApolloSSRPage;
