@@ -2,49 +2,49 @@
 import NextLink from 'next/link';
 
 /* Components */
-import { H1, UnorderedList, ListItem, Link } from '@/components/styled';
+import { H1, Ul, Li, Link } from '@/components/styled';
 
 export const Nav: React.FC<NavProps> = props => {
     return (
         <>
             <nav>
-                <UnorderedList>
-                    <ListItem>
+                <Ul>
+                    <Li>
                         <NextLink href = '/'>
                             <Link>Home</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
+                    </Li>
+                    <Li>
                         <NextLink href = '/redux'>
-                            <Link>Redux</Link>
+                            <Link>Redux SSG</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
+                    </Li>
+                    <Li>
                         <NextLink href = '/apollo-ssr'>
                             <Link>Apollo SSR</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
+                    </Li>
+                    <Li>
                         <NextLink href = '/apollo-ssg'>
                             <Link>Apollo SSG</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
+                    </Li>
+                    <Li>
                         <NextLink href = '/apollo-redux'>
-                            <Link>Apollo Redux</Link>
+                            <Link>Apollo Redux SSG</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
+                    </Li>
+                    <Li>
                         <NextLink href = '/apollo-redux-ssr'>
                             <Link>Apollo Redux SSR</Link>
                         </NextLink>
-                    </ListItem>
-                    <ListItem>
-                        <NextLink href = '/about'>
-                            <Link>About</Link>
+                    </Li>
+                    <Li>
+                        <NextLink href = '/images'>
+                            <Link>Images</Link>
                         </NextLink>
-                    </ListItem>
-                </UnorderedList>
+                    </Li>
+                </Ul>
             </nav>
             <hr />
 

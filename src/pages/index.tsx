@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 /* Components */
 import { Layout, Nav } from '@/components';
 
-const Home: NextPage = () => {
+const IndexPage: NextPage = () => {
     return (
         <Layout>
             <Nav title = 'Home' />
@@ -12,4 +12,4 @@ const Home: NextPage = () => {
     );
 };
 
-export default Home;
+export default IndexPage;

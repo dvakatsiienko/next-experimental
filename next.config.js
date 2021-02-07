@@ -7,6 +7,10 @@ const withBundleAnalyzer = analyze({
     defaultSizes: 'gzip',
 });
 
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: [ 'images.unsplash.com' ],
+    },
+};
 
 module.exports = withBundleAnalyzer(nextConfig);

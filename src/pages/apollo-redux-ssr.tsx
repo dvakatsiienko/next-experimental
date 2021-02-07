@@ -14,7 +14,7 @@ import { initApollo } from '@/lib/apollo';
 import { timerSlice } from '@/lib/redux/slices';
 import { allPostsQueryVars } from '@/features/apollo';
 
-const ApolloReduxSSR: NextPage = () => {
+const ApolloReduxSSRPage: NextPage = () => {
     const dispatch = useDispatch();
 
     useInterval(() => {
@@ -54,4 +54,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
 };
 
-export default ApolloReduxSSR;
+export default ApolloReduxSSRPage;
