@@ -7,7 +7,7 @@
         /* Project options */
         "target": "ESNext",
         "module": "ESNext",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "allowJs": true,
         "jsx": "preserve",
         "declaration": true,
