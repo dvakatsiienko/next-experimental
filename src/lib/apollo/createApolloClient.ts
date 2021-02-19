@@ -33,7 +33,7 @@ export const createApolloClient = () => {
             }),
 
             new HttpLink({
-                uri:         'https://nextjs-graphql-with-prisma-simple.vercel.app/api',
+                uri:         process.env.NEXT_PUBLIC_GQL_URL,
                 credentials: 'same-origin',
             }),
         ]),

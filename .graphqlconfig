@@ -1,7 +1,7 @@
 {
     "projects": {
         "app": {
-            "schemaPath": "codegen/schema.graphql",
+            "schemaPath": "https://nextjs-graphql-with-prisma-simple.vercel.app/api",
             "includes": [ "**/**/*.graphql" ]
         }
     }
