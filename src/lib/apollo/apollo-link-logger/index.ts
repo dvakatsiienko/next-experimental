@@ -13,12 +13,15 @@ export const loggerLink = new ApolloLink((operation, forward) => {
 
         const group = formatMessage(operationType, operation, ellapsed);
 
-        logging.groupCollapsed(...group);
+        if (process.browser) {
+            logging.groupCollapsed(...group);
 
-        logging.log('INIT', operation);
-        logging.log('RESULT', result);
+            logging.log('INIT', operation);
+            logging.log('RESULT', result);
 
-        logging.groupEnd(...group);
+            logging.groupEnd(...group);
+        }
+
         return result;
     });
 });
