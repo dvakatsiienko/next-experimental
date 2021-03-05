@@ -1,13 +1,10 @@
 schema: ${NEXT_PUBLIC_GQL_URL}
 documents: 'src/graphql/**/*.graphql'
 
-config:
-    # Test out the behavior and revisit later on
-    enumsAsConst: true
-
 generates:
     src/graphql/index.tsx:
         plugins:
             - typescript
             - typescript-operations
             - typescript-react-apollo
+            - typescript-apollo-client-helpers
