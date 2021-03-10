@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 /* Components */
 import { ErrorMessage } from './ErrorMessage';
-import { Ul, Li, Link, Button, Accent } from '@/components/styled';
+import {
+    Ul, Li, Link, Button, Accent
+} from '@/components/styled';
 
 /* Instruments */
 import * as gql from '@/graphql';
@@ -26,8 +28,7 @@ export const PostList: React.FC = () => {
         }
     };
 
-    const loadingMorePosts =
-        allPostsQueryResult.networkStatus === NetworkStatus.fetchMore;
+    const loadingMorePosts = allPostsQueryResult.networkStatus === NetworkStatus.fetchMore;
 
     const loadMorePosts = () => {
         allPostsQueryResult.fetchMore({

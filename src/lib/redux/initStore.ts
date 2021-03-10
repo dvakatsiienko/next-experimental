@@ -5,7 +5,7 @@ import { createStore } from './createStore';
  * Server: always null.
  * Client: null at first call, object on subsequent calls.
  */
-export let store = null;
+export let store = null; // eslint-disable-line
 
 export const initStore = preloadedState => {
     let _store = store ?? createStore(preloadedState);

@@ -22,12 +22,12 @@ export const CreatePostForm: React.FC = () => {
 
         createPost({
             variables: { title, url },
-            update:    (cache, { data: { createPost } }) => {
+            update:    (cache, { data }) => {
                 cache.modify({
                     fields: {
                         allPosts(existingPosts = []) {
                             const newPostRef = cache.writeFragment({
-                                data:     createPost,
+                                data:     data.createPost,
                                 fragment: tag`
                                     fragment NewPost on allPosts {
                                         id
@@ -48,14 +48,8 @@ export const CreatePostForm: React.FC = () => {
         <Form onSubmit = { submitForm }>
             <H6>Create Post</H6>
 
-            <Field
-                required name = 'title' placeholder = 'Title'
-                type = 'text'
-            />
-            <Field
-                required name = 'url' placeholder = 'Url'
-                type = 'url'
-            />
+            <Field required name = 'title' placeholder = 'Title' type = 'text' />
+            <Field required name = 'url' placeholder = 'Url' type = 'url' />
             <Button disabled = { loading } type = 'submit'>
                 Submit
             </Button>

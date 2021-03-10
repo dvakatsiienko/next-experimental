@@ -9,10 +9,9 @@ export const createStore = (preloadedState = {}) => {
     return configureStore({
         reducer:    rootReducer,
         preloadedState,
-        middleware: getDefaultMiddleware =>
-            getDefaultMiddleware({
-                immutableCheck:    false,
-                serializableCheck: false,
-            }).prepend(middleware),
+        middleware: getDefaultMiddleware => getDefaultMiddleware({
+            immutableCheck:    false,
+            serializableCheck: false,
+        }).prepend(middleware),
     });
 };

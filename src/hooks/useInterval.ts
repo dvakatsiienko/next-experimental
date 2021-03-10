@@ -9,7 +9,7 @@ export const useInterval = (callback: () => void, delay: number) => {
     }, [ callback ]);
 
     useEffect(() => {
-        // @ts-ignore
+        // @ts-expect-error TODO: refactor this part
         const handler = (...args) => savedCallback.current(...args);
 
         if (delay !== null) {

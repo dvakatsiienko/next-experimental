@@ -9,7 +9,7 @@ import { PostList, CreatePostForm } from '@/features/apollo';
 /* Instruments */
 import * as gql from '@/graphql';
 import { initApollo } from '@/lib/apollo';
-import { allPostsQueryVars } from '@/features/apollo';
+import { allPostsQueryVars } from '@/features/apollo/helpers';
 
 const ApolloSSRPage: NextPage = () => {
     return (

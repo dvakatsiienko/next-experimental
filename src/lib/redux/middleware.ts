@@ -4,6 +4,7 @@ import { Middleware } from '@reduxjs/toolkit';
 const middleware: Middleware[] = [];
 
 if (__DEV__) {
+    // eslint-disable-next-line
     const { createLogger } = require('redux-logger');
 
     const logger = createLogger({

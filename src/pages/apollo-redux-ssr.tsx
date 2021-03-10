@@ -12,7 +12,7 @@ import * as gql from '@/graphql';
 import { useInterval } from '@/hooks';
 import { initApollo } from '@/lib/apollo';
 import { timerSlice } from '@/lib/redux/slices';
-import { allPostsQueryVars } from '@/features/apollo';
+import { allPostsQueryVars } from '@/features/apollo/helpers';
 
 const ApolloReduxSSRPage: NextPage = () => {
     const dispatch = useDispatch();

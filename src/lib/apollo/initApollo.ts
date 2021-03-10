@@ -29,9 +29,7 @@ export const initApollo = (initialState = null) => {
              */
             arrayMerge: (destinationArray, sourceArray) => [
                 ...sourceArray,
-                ...destinationArray.filter(d =>
-                    sourceArray.every(s => !isEqual(d, s)),
-                ),
+                ...destinationArray.filter(d => sourceArray.every(s => !isEqual(d, s))),
             ],
         });
 

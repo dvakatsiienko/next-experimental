@@ -16,9 +16,8 @@ export const Button = styled.button<ButtonProps>`
         color: var(--color-4);
     }
 
-    ${props =>
-        props.$isFetching &&
-        `
+    ${props => props.$isFetching
+        && `
         cursor: not-allowed;
         color: grey;
 

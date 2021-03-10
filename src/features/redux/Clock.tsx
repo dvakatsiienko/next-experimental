@@ -12,7 +12,7 @@ export const Clock = () => {
     );
 
     return (
-        <Container $light = { light ? true : false }>
+        <Container $light = { !!light }>
             {formatTime(lastUpdate)}
         </Container>
     );
@@ -28,7 +28,7 @@ const Container = styled.div<ContainerProps>`
     margin-top: 15px;
     font: 50px menlo, monaco, monospace;
     color: #82fa58;
-    background-color: ${props => props.$light ? '#999' : '#000'};
+    background-color: ${props => (props.$light ? '#999' : '#000')};
 `;
 
 /* Helpers */

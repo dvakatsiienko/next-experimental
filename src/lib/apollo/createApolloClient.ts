@@ -1,5 +1,7 @@
 /* Core */
-import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
+import {
+    ApolloClient, HttpLink, InMemoryCache, from
+} from '@apollo/client';
 import { onError } from '@apollo/link-error';
 import { concatPagination } from '@apollo/client/utilities';
 import debug from 'debug';

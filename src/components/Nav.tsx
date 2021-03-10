@@ -2,7 +2,9 @@
 import NextLink from 'next/link';
 
 /* Components */
-import { H1, Ul, Li, Link } from '@/components/styled';
+import {
+    H1, Ul, Li, Link
+} from '@/components/styled';
 
 export const Nav: React.FC<NavProps> = props => {
     return (
