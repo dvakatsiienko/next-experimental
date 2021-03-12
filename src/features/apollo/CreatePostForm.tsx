@@ -1,6 +1,6 @@
 /* Core */
 import { gql as tag } from '@apollo/client';
-import styled from 'styled-components';
+import styled         from 'styled-components';
 
 /* Components */
 import { H6, Button } from '@/components/styled';

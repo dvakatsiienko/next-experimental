@@ -3,7 +3,7 @@ import { ApolloLink } from '@apollo/client';
 
 /* Instruments */
 import formatMessage from './formatMessage';
-import logging from './logging';
+import logging       from './logging';
 
 export const loggerLink = new ApolloLink((operation, forward) => {
     const startTime = new Date().getTime();

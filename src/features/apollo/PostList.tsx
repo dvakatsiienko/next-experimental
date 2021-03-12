@@ -1,15 +1,15 @@
 /* Core */
 import { NetworkStatus } from '@apollo/client';
-import styled from 'styled-components';
+import styled            from 'styled-components';
 
 /* Components */
-import { ErrorMessage } from './ErrorMessage';
+import { ErrorMessage }            from './ErrorMessage';
 import {
     Ul, Li, Link, Button, Accent
 } from '@/components/styled';
 
 /* Instruments */
-import * as gql from '@/graphql';
+import * as gql              from '@/graphql';
 import { allPostsQueryVars } from './helpers';
 
 export const PostList: React.FC = () => {

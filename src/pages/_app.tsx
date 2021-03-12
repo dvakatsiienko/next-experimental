@@ -1,15 +1,15 @@
 /* Core */
-import Head from 'next/head';
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import { AppProps } from 'next/app';
-import { ApolloProvider } from '@apollo/client';
-import { Provider as ReduxProvider } from 'react-redux';
+import Head                                          from 'next/head';
+import Router                                        from 'next/router';
+import NProgress                                     from 'nprogress';
+import { AppProps }                                  from 'next/app';
+import { ApolloProvider }                            from '@apollo/client';
+import { Provider as ReduxProvider }                 from 'react-redux';
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 
 /* Instruments */
 import '@/theme/index.css';
-import { useStore } from '@/lib/redux';
+import { useStore }  from '@/lib/redux';
 import { useApollo } from '@/lib/apollo';
 
 const App: React.FC<AppProps> = props => {

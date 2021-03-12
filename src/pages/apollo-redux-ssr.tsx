@@ -1,17 +1,17 @@
 /* Core */
 import { NextPage, GetServerSideProps } from 'next';
-import { useDispatch } from 'react-redux';
+import { useDispatch }                  from 'react-redux';
 
 /* Components */
-import { Layout, Nav } from '@/components';
+import { Layout, Nav }              from '@/components';
 import { PostList, CreatePostForm } from '@/features/apollo';
-import { Clock, Counter } from '@/features/redux';
+import { Clock, Counter }           from '@/features/redux';
 
 /* Instruments */
-import * as gql from '@/graphql';
-import { useInterval } from '@/hooks';
-import { initApollo } from '@/lib/apollo';
-import { timerSlice } from '@/lib/redux/slices';
+import * as gql              from '@/graphql';
+import { useInterval }       from '@/hooks';
+import { initApollo }        from '@/lib/apollo';
+import { timerSlice }        from '@/lib/redux/slices';
 import { allPostsQueryVars } from '@/features/apollo/helpers';
 
 const ApolloReduxSSRPage: NextPage = () => {

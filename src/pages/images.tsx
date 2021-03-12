@@ -1,10 +1,10 @@
 /* Core */
 import { NextPage } from 'next';
-import Image from 'next/image';
+import Image        from 'next/image';
 
 /* Components */
 import { Layout, Nav } from '@/components';
-import { P, Link } from '@/components/styled';
+import { P, Link }     from '@/components/styled';
 
 const ImagesPage: NextPage = () => {
     return (

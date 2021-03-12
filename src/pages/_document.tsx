@@ -1,5 +1,5 @@
 /* Core */
-import Document, { DocumentContext } from 'next/document';
+import Document, { DocumentContext }                  from 'next/document';
 import { ServerStyleSheet as StyledServerStyleSheet } from 'styled-components';
 
 export default class extends Document {

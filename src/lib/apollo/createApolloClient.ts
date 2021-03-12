@@ -2,9 +2,9 @@
 import {
     ApolloClient, HttpLink, InMemoryCache, from
 } from '@apollo/client';
-import { onError } from '@apollo/link-error';
+import { onError }          from '@apollo/link-error';
 import { concatPagination } from '@apollo/client/utilities';
-import debug from 'debug';
+import debug                from 'debug';
 
 /* Instruments */
 import { loggerLink } from './apollo-link-logger';

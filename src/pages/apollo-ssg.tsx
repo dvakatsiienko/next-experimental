@@ -2,8 +2,8 @@
 import { NextPage } from 'next';
 
 /* Components */
-import { Layout, Nav } from '@/components';
-import { P, Link } from '@/components/styled';
+import { Layout, Nav }              from '@/components';
+import { P, Link }                  from '@/components/styled';
 import { PostList, CreatePostForm } from '@/features/apollo';
 
 const ApolloSSGPage: NextPage = () => {

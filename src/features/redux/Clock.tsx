@@ -1,6 +1,6 @@
 /* Core */
 import { shallowEqual } from 'react-redux';
-import styled from 'styled-components';
+import styled           from 'styled-components';
 
 /* Instruments */
 import { useSelector } from '@/lib/redux';
@@ -11,11 +11,7 @@ export const Clock = () => {
         shallowEqual,
     );
 
-    return (
-        <Container $light = { !!light }>
-            {formatTime(lastUpdate)}
-        </Container>
-    );
+    return <Container $light = { !!light }>{formatTime(lastUpdate)}</Container>;
 };
 
 /* Styles */
